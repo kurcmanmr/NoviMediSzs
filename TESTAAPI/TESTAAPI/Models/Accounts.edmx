@@ -1,0 +1,101 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="MedisysModel1.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'Medisys.dbo.Accounts' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="Accounts">
+          <Key>
+            <PropertyRef Name="AccountID" />
+          </Key>
+          <Property Name="AccountID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Naziv" Type="nvarchar" MaxLength="100" />
+          <Property Name="Adresa" Type="nvarchar" MaxLength="50" />
+          <Property Name="Posta" Type="nvarchar" MaxLength="10" />
+          <Property Name="Mjesto" Type="nvarchar" MaxLength="50" />
+          <Property Name="ParentID" Type="int" />
+          <Property Name="SettingsFileName" Type="nvarchar" MaxLength="50" />
+          <Property Name="SifraLokacije" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityContainer Name="MedisysModel1StoreContainer">
+          <EntitySet Name="Accounts" EntityType="Self.Accounts" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [Accounts].[AccountID] AS [AccountID], 
+    [Accounts].[Naziv] AS [Naziv], 
+    [Accounts].[Adresa] AS [Adresa], 
+    [Accounts].[Posta] AS [Posta], 
+    [Accounts].[Mjesto] AS [Mjesto], 
+    [Accounts].[ParentID] AS [ParentID], 
+    [Accounts].[SettingsFileName] AS [SettingsFileName], 
+    [Accounts].[SifraLokacije] AS [SifraLokacije]
+    FROM [dbo].[Accounts] AS [Accounts]</DefiningQuery>
+          </EntitySet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="MedisysModel1" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Accounts">
+          <Key>
+            <PropertyRef Name="AccountID" />
+          </Key>
+          <Property Name="AccountID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Naziv" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Adresa" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Posta" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="Mjesto" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ParentID" Type="Int32" />
+          <Property Name="SettingsFileName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="SifraLokacije" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityContainer Name="MedisysEntities1" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Accounts" EntityType="Self.Accounts" />
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="MedisysModel1StoreContainer" CdmEntityContainer="MedisysEntities1">
+          <EntitySetMapping Name="Accounts">
+            <EntityTypeMapping TypeName="MedisysModel1.Accounts">
+              <MappingFragment StoreEntitySet="Accounts">
+                <ScalarProperty Name="AccountID" ColumnName="AccountID" />
+                <ScalarProperty Name="Naziv" ColumnName="Naziv" />
+                <ScalarProperty Name="Adresa" ColumnName="Adresa" />
+                <ScalarProperty Name="Posta" ColumnName="Posta" />
+                <ScalarProperty Name="Mjesto" ColumnName="Mjesto" />
+                <ScalarProperty Name="ParentID" ColumnName="ParentID" />
+                <ScalarProperty Name="SettingsFileName" ColumnName="SettingsFileName" />
+                <ScalarProperty Name="SifraLokacije" ColumnName="SifraLokacije" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

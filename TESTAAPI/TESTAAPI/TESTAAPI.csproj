@@ -235,15 +235,32 @@
     <Compile Include="Areas\HelpPage\SampleGeneration\TextSample.cs" />
     <Compile Include="Areas\HelpPage\XmlDocumentationProvider.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\AccountsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\UsersController.cs" />
+    <Compile Include="Controllers\UsersCurrentsController.cs" />
     <Compile Include="Controllers\ValuesController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\AccountBindingModels.cs" />
+    <Compile Include="Models\Accounts.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Accounts.Context.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\Accounts.cs">
-      <DependentUpon>Users.tt</DependentUpon>
+      <DependentUpon>Accounts.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Accounts.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Accounts.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Accounts1.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Accounts.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\IdentityModels.cs" />
@@ -265,8 +282,23 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Users.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\UsersCurrent.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>UsersCurrent.Context.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\UsersCurrent.cs">
-      <DependentUpon>Users.tt</DependentUpon>
+      <DependentUpon>UsersCurrent.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\UsersCurrent.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>UsersCurrent.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Models\UsersCurrent1.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>UsersCurrent.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\UsersLog.cs">
       <DependentUpon>Users.tt</DependentUpon>
@@ -286,6 +318,16 @@
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
+    <Content Include="Models\Accounts.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>Accounts.edmx</DependentUpon>
+      <LastGenOutput>Accounts.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Models\Accounts.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>Accounts.edmx</DependentUpon>
+      <LastGenOutput>Accounts1.cs</LastGenOutput>
+    </Content>
     <Content Include="Models\Users.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>Users.edmx</DependentUpon>
@@ -295,6 +337,16 @@
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>Users.edmx</DependentUpon>
       <LastGenOutput>Users1.cs</LastGenOutput>
+    </Content>
+    <Content Include="Models\UsersCurrent.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>UsersCurrent.edmx</DependentUpon>
+      <LastGenOutput>UsersCurrent.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Models\UsersCurrent.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>UsersCurrent.edmx</DependentUpon>
+      <LastGenOutput>UsersCurrent1.cs</LastGenOutput>
     </Content>
     <Content Include="Scripts\ai.0.15.0-build58334.js" />
     <Content Include="Scripts\ai.0.15.0-build58334.min.js" />
@@ -366,6 +418,20 @@
     <Content Include="Scripts\angular-cookies.min.js.map" />
     <Content Include="Scripts\angular-aria.min.js.map" />
     <Content Include="Scripts\angular-animate.min.js.map" />
+    <EntityDeploy Include="Models\Accounts.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>Accounts.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Models\Accounts.edmx.diagram">
+      <DependentUpon>Accounts.edmx</DependentUpon>
+    </Content>
+    <EntityDeploy Include="Models\UsersCurrent.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>UsersCurrent.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Models\UsersCurrent.edmx.diagram">
+      <DependentUpon>UsersCurrent.edmx</DependentUpon>
+    </Content>
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\i18n\angular-locale_aa-dj.js" />
     <Content Include="Scripts\i18n\angular-locale_aa-er.js" />
