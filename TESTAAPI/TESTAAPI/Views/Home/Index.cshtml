@@ -2,15 +2,20 @@
 @section scripts{
 
     <script src="~/Scripts/angular.js"></script>
+    <script src="~/Scripts/angular-route.js"></script>
 <script src="~/UsersApp.js"></script>
 <script src="~/UsersService.js"></script>
-<script src="~/UsersCurrentsService.js"></script>
-<script src="~/AccountsService.js"></script>
+
 
 }
 
-
 <div ng-app="UsersApp" class="row">
+
+    <ul>
+        <li><a href="/RoutTest/One">Page One</a></li>
+        <li><a href="/RoutTest/Two">Page Two</a></li>
+        <li><a href="/RoutTest/Three">Page Three</a></li>
+    </ul>
 
     <div ng-controller="UsersController">
 

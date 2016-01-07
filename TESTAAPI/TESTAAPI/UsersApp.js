@@ -1,7 +1,40 @@
-﻿var UsersApp = angular.module('UsersApp', [])
+﻿var UsersApp = angular.module('UsersApp', ['ngRoute'])
 
 
 
+var configFunction = function ($routeProvider) {
+    $routeProvider
+
+    .when('/', {
+        templateUrl1: '~/Home/Index',
+        controller: 'UserController'
+    })
+
+    .when('/', {
+        templateUrl1: '~/RouteTest/One',
+        controller: 'LoginController'
+    })
+
+    .when('/', {
+        templateUrl1: '~/RouteTest/Two',
+        controller: 'LoginController'
+    })
+
+    .when('/', {
+        templateUrl1: '~/RouteTest/Three',
+        controller: 'LoginController'
+    })
+
+    //configFunction.$inject = ['$routeProvider'];
+
+
+
+}
+    UsersApp.controller('LoginController', function ($scope, $http, UsersService) {
+
+        $scope.MojaPoruka = 'Login Page'
+
+    });
 UsersApp.controller('UsersController', function ($scope, $http, UsersService) {
 
     getUsers1();
@@ -146,4 +179,6 @@ UsersApp.controller('AccountsController', function ($scope, $http, AccountsServi
     }
 
 });
+
+
 
