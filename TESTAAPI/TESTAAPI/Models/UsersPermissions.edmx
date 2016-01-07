@@ -1,0 +1,151 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="MedisysModel2.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'Medisys.dbo.UsersPermissions' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="UsersPermissions">
+          <Key>
+            <PropertyRef Name="Broj" />
+            <PropertyRef Name="UserID" />
+            <PropertyRef Name="ModuleID" />
+            <PropertyRef Name="AccountID" />
+          </Key>
+          <Property Name="Broj" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserID" Type="int" Nullable="false" />
+          <Property Name="ModuleID" Type="int" Nullable="false" />
+          <Property Name="AccountID" Type="int" Nullable="false" />
+          <Property Name="Pokreni" Type="bit" />
+          <Property Name="CanShow" Type="bit" />
+          <Property Name="CanAdd" Type="bit" />
+          <Property Name="CanEdit" Type="bit" />
+          <Property Name="CanSave" Type="bit" />
+          <Property Name="CanDelete" Type="bit" />
+          <Property Name="CanPrint" Type="bit" />
+          <Property Name="CanPreview" Type="bit" />
+          <Property Name="CanRun" Type="bit" />
+          <Property Name="CanFinalize" Type="bit" />
+          <Property Name="CanStorno" Type="bit" />
+          <Property Name="CanSeeOthers" Type="bit" />
+          <Property Name="CanChangeOthers" Type="bit" />
+          <Property Name="CanSaveOthers" Type="bit" />
+          <Property Name="CanPrintOthers" Type="bit" />
+        </EntityType>
+        <EntityContainer Name="MedisysModel2StoreContainer">
+          <EntitySet Name="UsersPermissions" EntityType="Self.UsersPermissions" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [UsersPermissions].[Broj] AS [Broj], 
+    [UsersPermissions].[UserID] AS [UserID], 
+    [UsersPermissions].[ModuleID] AS [ModuleID], 
+    [UsersPermissions].[AccountID] AS [AccountID], 
+    [UsersPermissions].[Pokreni] AS [Pokreni], 
+    [UsersPermissions].[CanShow] AS [CanShow], 
+    [UsersPermissions].[CanAdd] AS [CanAdd], 
+    [UsersPermissions].[CanEdit] AS [CanEdit], 
+    [UsersPermissions].[CanSave] AS [CanSave], 
+    [UsersPermissions].[CanDelete] AS [CanDelete], 
+    [UsersPermissions].[CanPrint] AS [CanPrint], 
+    [UsersPermissions].[CanPreview] AS [CanPreview], 
+    [UsersPermissions].[CanRun] AS [CanRun], 
+    [UsersPermissions].[CanFinalize] AS [CanFinalize], 
+    [UsersPermissions].[CanStorno] AS [CanStorno], 
+    [UsersPermissions].[CanSeeOthers] AS [CanSeeOthers], 
+    [UsersPermissions].[CanChangeOthers] AS [CanChangeOthers], 
+    [UsersPermissions].[CanSaveOthers] AS [CanSaveOthers], 
+    [UsersPermissions].[CanPrintOthers] AS [CanPrintOthers]
+    FROM [dbo].[UsersPermissions] AS [UsersPermissions]</DefiningQuery>
+          </EntitySet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="MedisysModel2" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="UsersPermissions">
+          <Key>
+            <PropertyRef Name="Broj" />
+            <PropertyRef Name="UserID" />
+            <PropertyRef Name="ModuleID" />
+            <PropertyRef Name="AccountID" />
+          </Key>
+          <Property Name="Broj" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserID" Type="Int32" Nullable="false" />
+          <Property Name="ModuleID" Type="Int32" Nullable="false" />
+          <Property Name="AccountID" Type="Int32" Nullable="false" />
+          <Property Name="Pokreni" Type="Boolean" />
+          <Property Name="CanShow" Type="Boolean" />
+          <Property Name="CanAdd" Type="Boolean" />
+          <Property Name="CanEdit" Type="Boolean" />
+          <Property Name="CanSave" Type="Boolean" />
+          <Property Name="CanDelete" Type="Boolean" />
+          <Property Name="CanPrint" Type="Boolean" />
+          <Property Name="CanPreview" Type="Boolean" />
+          <Property Name="CanRun" Type="Boolean" />
+          <Property Name="CanFinalize" Type="Boolean" />
+          <Property Name="CanStorno" Type="Boolean" />
+          <Property Name="CanSeeOthers" Type="Boolean" />
+          <Property Name="CanChangeOthers" Type="Boolean" />
+          <Property Name="CanSaveOthers" Type="Boolean" />
+          <Property Name="CanPrintOthers" Type="Boolean" />
+        </EntityType>
+        <EntityContainer Name="MedisysEntities2" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="UsersPermissions" EntityType="Self.UsersPermissions" />
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="MedisysModel2StoreContainer" CdmEntityContainer="MedisysEntities2">
+          <EntitySetMapping Name="UsersPermissions">
+            <EntityTypeMapping TypeName="MedisysModel2.UsersPermissions">
+              <MappingFragment StoreEntitySet="UsersPermissions">
+                <ScalarProperty Name="Broj" ColumnName="Broj" />
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+                <ScalarProperty Name="ModuleID" ColumnName="ModuleID" />
+                <ScalarProperty Name="AccountID" ColumnName="AccountID" />
+                <ScalarProperty Name="Pokreni" ColumnName="Pokreni" />
+                <ScalarProperty Name="CanShow" ColumnName="CanShow" />
+                <ScalarProperty Name="CanAdd" ColumnName="CanAdd" />
+                <ScalarProperty Name="CanEdit" ColumnName="CanEdit" />
+                <ScalarProperty Name="CanSave" ColumnName="CanSave" />
+                <ScalarProperty Name="CanDelete" ColumnName="CanDelete" />
+                <ScalarProperty Name="CanPrint" ColumnName="CanPrint" />
+                <ScalarProperty Name="CanPreview" ColumnName="CanPreview" />
+                <ScalarProperty Name="CanRun" ColumnName="CanRun" />
+                <ScalarProperty Name="CanFinalize" ColumnName="CanFinalize" />
+                <ScalarProperty Name="CanStorno" ColumnName="CanStorno" />
+                <ScalarProperty Name="CanSeeOthers" ColumnName="CanSeeOthers" />
+                <ScalarProperty Name="CanChangeOthers" ColumnName="CanChangeOthers" />
+                <ScalarProperty Name="CanSaveOthers" ColumnName="CanSaveOthers" />
+                <ScalarProperty Name="CanPrintOthers" ColumnName="CanPrintOthers" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

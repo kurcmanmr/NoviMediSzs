@@ -26,7 +26,7 @@ UsersApp.controller('UsersController', function ($scope, $http, UsersService) {
 
     }
 
-    //$scope.message = "Infrgistics";
+    
 
     ShowUsers = function () {
 
@@ -47,30 +47,109 @@ UsersApp.controller('UsersController', function ($scope, $http, UsersService) {
 
 
         });
+    }
+
+});
 
 
+UsersApp.controller('UsersLogController', function ($scope, $http, UsersLogService) {
+
+    getUsersLog1();
+    function getUsersLog1() {
         
+        UsersLogService.getUsersLog()
+        .success(function (data) {
+           
+
+            $scope.usersLog = data;
+            console.log($scope.usersLog);
+
+        })
+        .error(function (error) {
 
 
+            $scope.status = 'Ne mogu da ucitam user jer sam glup' + error.message;
+            console.log($scope.status);
+
+        });
+
+
+    }
+
+    //$scope.message = "Infrgistics";
+
+    ShowUsersLog = function () {
+
+
+        $http.get('api/UsersLogs')
+
+        .success(function (data1) {
+
+            $scope.korisnici = data1;
+
+
+        })
+        .error(function (error1) {
+
+            $scope.status1 = 'Ne mogu da ucitam user jer sam glup';
+            console.log($scope.status1);
+
+
+
+        });
+        
+    }
+
+});
+
+
+UsersApp.controller('UsersPermissionsController', function ($scope, $http, UsersPermissionsService) {
+
+    getUsersPermissions1();
+    function getUsersPermissions1() {
+
+        UsersPermissionsService.getUsersPermissions()
+        .success(function (data) {
+
+
+            $scope.usersPermissions = data;
+            console.log($scope.usersPermissions);
+
+        })
+        .error(function (error) {
+
+
+            $scope.status = 'Ne mogu da ucitam user jer sam glup' + error.message;
+            console.log($scope.status);
+
+        });
+
+
+    }
+
+    //$scope.message = "Infrgistics";
+
+    ShowUsersPermissions = function () {
+
+
+        $http.get('api/UsersPermissions')
+
+        .success(function (data1) {
+
+            $scope.korisnici = data1;
+
+
+        })
+        .error(function (error1) {
+
+            $scope.status1 = 'Ne mogu da ucitam user jer sam glup';
+            console.log($scope.status1);
+
+
+
+        });
 
     }
 
 });
 
-//UsersApp.factory('UsersService', ['$http', function ($http) {
-
-
-
-//    var UsersService = {};
-
-//    UsersService.getUsers = function () {
-
-//        return $http.get('http://localhost:5121/Api/Users');
-
-//    };
-
-//    return UsersService;
-
-
-
-//}]);
