@@ -1,0 +1,453 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="MedisysModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'Medisys.dbo.Accounts' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="Accounts">
+          <Key>
+            <PropertyRef Name="AccountID" />
+          </Key>
+          <Property Name="AccountID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Naziv" Type="nvarchar" MaxLength="100" />
+          <Property Name="Adresa" Type="nvarchar" MaxLength="50" />
+          <Property Name="Posta" Type="nvarchar" MaxLength="10" />
+          <Property Name="Mjesto" Type="nvarchar" MaxLength="50" />
+          <Property Name="ParentID" Type="int" />
+          <Property Name="SettingsFileName" Type="nvarchar" MaxLength="50" />
+          <Property Name="SifraLokacije" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'Medisys.dbo.Users' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="Users">
+          <Key>
+            <PropertyRef Name="UserID" />
+          </Key>
+          <Property Name="UserID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="GroupID" Type="int" />
+          <Property Name="SifraKorisnika" Type="nvarchar" MaxLength="50" />
+          <Property Name="Titula" Type="nvarchar" MaxLength="50" />
+          <Property Name="Ime" Type="nvarchar" MaxLength="50" />
+          <Property Name="Prezime" Type="nvarchar" MaxLength="50" />
+          <Property Name="UserName" Type="nvarchar" MaxLength="50" />
+          <Property Name="UserPass" Type="nvarchar" MaxLength="50" />
+          <Property Name="Tel_1" Type="nvarchar" MaxLength="50" />
+          <Property Name="Tel_2" Type="nvarchar" MaxLength="50" />
+          <Property Name="Adresa" Type="nvarchar" MaxLength="50" />
+          <Property Name="MjestoID" Type="int" />
+          <Property Name="Gsm" Type="nvarchar" MaxLength="50" />
+          <Property Name="Napomena" Type="nvarchar" MaxLength="255" />
+          <Property Name="_DateCreated" Type="datetime" />
+          <Property Name="_DateUpdated" Type="datetime" />
+          <Property Name="_KorisnikID" Type="int" />
+          <Property Name="Neaktivan" Type="bit" />
+          <Property Name="Ispis" Type="bit" />
+          <Property Name="Daktilograf" Type="bit" />
+          <Property Name="Opticar" Type="bit" />
+          <Property Name="OpciKorisnik" Type="bit" />
+          <Property Name="SobaNalazID" Type="bit" />
+          <Property Name="Oib" Type="nvarchar" MaxLength="50" />
+          <Property Name="NalaziFilter" Type="bit" />
+          <Property Name="ENarUserName" Type="nvarchar" MaxLength="50" />
+          <Property Name="ENarUserPass" Type="nvarchar" MaxLength="50" />
+          <Property Name="MBOUser" Type="nvarchar" MaxLength="50" />
+          <Property Name="ENarOpen" Type="bit" />
+          <Property Name="ENarPreuzimanje" Type="bit" />
+          <Property Name="ENarRezervacija" Type="bit" />
+          <Property Name="Lijecnik" Type="bit" />
+          <Property Name="ENarCreateOperater" Type="bit" />
+          <Property Name="ENarCreateRadiliste" Type="bit" />
+          <Property Name="ENarRadilistaZahvati" Type="bit" />
+          <Property Name="ENarRadilistaOsobe" Type="bit" />
+          <Property Name="ENarSifraHzjz" Type="nvarchar" MaxLength="50" />
+          <Property Name="ENarEvidencijaDolaska" Type="bit" />
+          <Property Name="AccountLastID" Type="int" />
+          <Property Name="AccountAutoLogin" Type="bit" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'Medisys.dbo.UsersCurrent' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="UsersCurrent">
+          <Key>
+            <PropertyRef Name="ID" />
+            <PropertyRef Name="UserID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" />
+          <Property Name="UserID" Type="int" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'Medisys.dbo.UsersLog' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="UsersLog">
+          <Key>
+            <PropertyRef Name="LogID" />
+          </Key>
+          <Property Name="LogID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Vrijeme" Type="datetime" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'Medisys.dbo.UsersPermissions' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="UsersPermissions">
+          <Key>
+            <PropertyRef Name="Broj" />
+            <PropertyRef Name="UserID" />
+            <PropertyRef Name="ModuleID" />
+            <PropertyRef Name="AccountID" />
+          </Key>
+          <Property Name="Broj" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserID" Type="int" Nullable="false" />
+          <Property Name="ModuleID" Type="int" Nullable="false" />
+          <Property Name="AccountID" Type="int" Nullable="false" />
+          <Property Name="Pokreni" Type="bit" />
+          <Property Name="CanShow" Type="bit" />
+          <Property Name="CanAdd" Type="bit" />
+          <Property Name="CanEdit" Type="bit" />
+          <Property Name="CanSave" Type="bit" />
+          <Property Name="CanDelete" Type="bit" />
+          <Property Name="CanPrint" Type="bit" />
+          <Property Name="CanPreview" Type="bit" />
+          <Property Name="CanRun" Type="bit" />
+          <Property Name="CanFinalize" Type="bit" />
+          <Property Name="CanStorno" Type="bit" />
+          <Property Name="CanSeeOthers" Type="bit" />
+          <Property Name="CanChangeOthers" Type="bit" />
+          <Property Name="CanSaveOthers" Type="bit" />
+          <Property Name="CanPrintOthers" Type="bit" />
+        </EntityType>
+        <EntityContainer Name="MedisysModelStoreContainer">
+          <EntitySet Name="Accounts" EntityType="Self.Accounts" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [Accounts].[AccountID] AS [AccountID], 
+    [Accounts].[Naziv] AS [Naziv], 
+    [Accounts].[Adresa] AS [Adresa], 
+    [Accounts].[Posta] AS [Posta], 
+    [Accounts].[Mjesto] AS [Mjesto], 
+    [Accounts].[ParentID] AS [ParentID], 
+    [Accounts].[SettingsFileName] AS [SettingsFileName], 
+    [Accounts].[SifraLokacije] AS [SifraLokacije]
+    FROM [dbo].[Accounts] AS [Accounts]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="Users" EntityType="Self.Users" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [Users].[UserID] AS [UserID], 
+    [Users].[GroupID] AS [GroupID], 
+    [Users].[SifraKorisnika] AS [SifraKorisnika], 
+    [Users].[Titula] AS [Titula], 
+    [Users].[Ime] AS [Ime], 
+    [Users].[Prezime] AS [Prezime], 
+    [Users].[UserName] AS [UserName], 
+    [Users].[UserPass] AS [UserPass], 
+    [Users].[Tel_1] AS [Tel_1], 
+    [Users].[Tel_2] AS [Tel_2], 
+    [Users].[Adresa] AS [Adresa], 
+    [Users].[MjestoID] AS [MjestoID], 
+    [Users].[Gsm] AS [Gsm], 
+    [Users].[Napomena] AS [Napomena], 
+    [Users].[_DateCreated] AS [_DateCreated], 
+    [Users].[_DateUpdated] AS [_DateUpdated], 
+    [Users].[_KorisnikID] AS [_KorisnikID], 
+    [Users].[Neaktivan] AS [Neaktivan], 
+    [Users].[Ispis] AS [Ispis], 
+    [Users].[Daktilograf] AS [Daktilograf], 
+    [Users].[Opticar] AS [Opticar], 
+    [Users].[OpciKorisnik] AS [OpciKorisnik], 
+    [Users].[SobaNalazID] AS [SobaNalazID], 
+    [Users].[Oib] AS [Oib], 
+    [Users].[NalaziFilter] AS [NalaziFilter], 
+    [Users].[ENarUserName] AS [ENarUserName], 
+    [Users].[ENarUserPass] AS [ENarUserPass], 
+    [Users].[MBOUser] AS [MBOUser], 
+    [Users].[ENarOpen] AS [ENarOpen], 
+    [Users].[ENarPreuzimanje] AS [ENarPreuzimanje], 
+    [Users].[ENarRezervacija] AS [ENarRezervacija], 
+    [Users].[Lijecnik] AS [Lijecnik], 
+    [Users].[ENarCreateOperater] AS [ENarCreateOperater], 
+    [Users].[ENarCreateRadiliste] AS [ENarCreateRadiliste], 
+    [Users].[ENarRadilistaZahvati] AS [ENarRadilistaZahvati], 
+    [Users].[ENarRadilistaOsobe] AS [ENarRadilistaOsobe], 
+    [Users].[ENarSifraHzjz] AS [ENarSifraHzjz], 
+    [Users].[ENarEvidencijaDolaska] AS [ENarEvidencijaDolaska], 
+    [Users].[AccountLastID] AS [AccountLastID], 
+    [Users].[AccountAutoLogin] AS [AccountAutoLogin]
+    FROM [dbo].[Users] AS [Users]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="UsersCurrent" EntityType="Self.UsersCurrent" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [UsersCurrent].[ID] AS [ID], 
+    [UsersCurrent].[UserID] AS [UserID]
+    FROM [dbo].[UsersCurrent] AS [UsersCurrent]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="UsersLog" EntityType="Self.UsersLog" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [UsersLog].[LogID] AS [LogID], 
+    [UsersLog].[Vrijeme] AS [Vrijeme]
+    FROM [dbo].[UsersLog] AS [UsersLog]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="UsersPermissions" EntityType="Self.UsersPermissions" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [UsersPermissions].[Broj] AS [Broj], 
+    [UsersPermissions].[UserID] AS [UserID], 
+    [UsersPermissions].[ModuleID] AS [ModuleID], 
+    [UsersPermissions].[AccountID] AS [AccountID], 
+    [UsersPermissions].[Pokreni] AS [Pokreni], 
+    [UsersPermissions].[CanShow] AS [CanShow], 
+    [UsersPermissions].[CanAdd] AS [CanAdd], 
+    [UsersPermissions].[CanEdit] AS [CanEdit], 
+    [UsersPermissions].[CanSave] AS [CanSave], 
+    [UsersPermissions].[CanDelete] AS [CanDelete], 
+    [UsersPermissions].[CanPrint] AS [CanPrint], 
+    [UsersPermissions].[CanPreview] AS [CanPreview], 
+    [UsersPermissions].[CanRun] AS [CanRun], 
+    [UsersPermissions].[CanFinalize] AS [CanFinalize], 
+    [UsersPermissions].[CanStorno] AS [CanStorno], 
+    [UsersPermissions].[CanSeeOthers] AS [CanSeeOthers], 
+    [UsersPermissions].[CanChangeOthers] AS [CanChangeOthers], 
+    [UsersPermissions].[CanSaveOthers] AS [CanSaveOthers], 
+    [UsersPermissions].[CanPrintOthers] AS [CanPrintOthers]
+    FROM [dbo].[UsersPermissions] AS [UsersPermissions]</DefiningQuery>
+          </EntitySet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="MedisysModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Accounts">
+          <Key>
+            <PropertyRef Name="AccountID" />
+          </Key>
+          <Property Name="AccountID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Naziv" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Adresa" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Posta" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="Mjesto" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ParentID" Type="Int32" />
+          <Property Name="SettingsFileName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="SifraLokacije" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="Users">
+          <Key>
+            <PropertyRef Name="UserID" />
+          </Key>
+          <Property Name="UserID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="GroupID" Type="Int32" />
+          <Property Name="SifraKorisnika" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Titula" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Ime" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Prezime" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="UserName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="UserPass" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Tel_1" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Tel_2" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Adresa" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="MjestoID" Type="Int32" />
+          <Property Name="Gsm" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Napomena" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="C_DateCreated" Type="DateTime" Precision="3" />
+          <Property Name="C_DateUpdated" Type="DateTime" Precision="3" />
+          <Property Name="C_KorisnikID" Type="Int32" />
+          <Property Name="Neaktivan" Type="Boolean" />
+          <Property Name="Ispis" Type="Boolean" />
+          <Property Name="Daktilograf" Type="Boolean" />
+          <Property Name="Opticar" Type="Boolean" />
+          <Property Name="OpciKorisnik" Type="Boolean" />
+          <Property Name="SobaNalazID" Type="Boolean" />
+          <Property Name="Oib" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="NalaziFilter" Type="Boolean" />
+          <Property Name="ENarUserName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ENarUserPass" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="MBOUser" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ENarOpen" Type="Boolean" />
+          <Property Name="ENarPreuzimanje" Type="Boolean" />
+          <Property Name="ENarRezervacija" Type="Boolean" />
+          <Property Name="Lijecnik" Type="Boolean" />
+          <Property Name="ENarCreateOperater" Type="Boolean" />
+          <Property Name="ENarCreateRadiliste" Type="Boolean" />
+          <Property Name="ENarRadilistaZahvati" Type="Boolean" />
+          <Property Name="ENarRadilistaOsobe" Type="Boolean" />
+          <Property Name="ENarSifraHzjz" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ENarEvidencijaDolaska" Type="Boolean" />
+          <Property Name="AccountLastID" Type="Int32" />
+          <Property Name="AccountAutoLogin" Type="Boolean" />
+        </EntityType>
+        <EntityType Name="UsersCurrent">
+          <Key>
+            <PropertyRef Name="ID" />
+            <PropertyRef Name="UserID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" />
+          <Property Name="UserID" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="UsersLog">
+          <Key>
+            <PropertyRef Name="LogID" />
+          </Key>
+          <Property Name="LogID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Vrijeme" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="UsersPermissions">
+          <Key>
+            <PropertyRef Name="Broj" />
+            <PropertyRef Name="UserID" />
+            <PropertyRef Name="ModuleID" />
+            <PropertyRef Name="AccountID" />
+          </Key>
+          <Property Name="Broj" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserID" Type="Int32" Nullable="false" />
+          <Property Name="ModuleID" Type="Int32" Nullable="false" />
+          <Property Name="AccountID" Type="Int32" Nullable="false" />
+          <Property Name="Pokreni" Type="Boolean" />
+          <Property Name="CanShow" Type="Boolean" />
+          <Property Name="CanAdd" Type="Boolean" />
+          <Property Name="CanEdit" Type="Boolean" />
+          <Property Name="CanSave" Type="Boolean" />
+          <Property Name="CanDelete" Type="Boolean" />
+          <Property Name="CanPrint" Type="Boolean" />
+          <Property Name="CanPreview" Type="Boolean" />
+          <Property Name="CanRun" Type="Boolean" />
+          <Property Name="CanFinalize" Type="Boolean" />
+          <Property Name="CanStorno" Type="Boolean" />
+          <Property Name="CanSeeOthers" Type="Boolean" />
+          <Property Name="CanChangeOthers" Type="Boolean" />
+          <Property Name="CanSaveOthers" Type="Boolean" />
+          <Property Name="CanPrintOthers" Type="Boolean" />
+        </EntityType>
+        <EntityContainer Name="MedisysEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Accounts" EntityType="Self.Accounts" />
+          <EntitySet Name="Users" EntityType="Self.Users" />
+          <EntitySet Name="UsersCurrent" EntityType="Self.UsersCurrent" />
+          <EntitySet Name="UsersLog" EntityType="Self.UsersLog" />
+          <EntitySet Name="UsersPermissions" EntityType="Self.UsersPermissions" />
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="MedisysModelStoreContainer" CdmEntityContainer="MedisysEntities">
+          <EntitySetMapping Name="Accounts">
+            <EntityTypeMapping TypeName="MedisysModel.Accounts">
+              <MappingFragment StoreEntitySet="Accounts">
+                <ScalarProperty Name="AccountID" ColumnName="AccountID" />
+                <ScalarProperty Name="Naziv" ColumnName="Naziv" />
+                <ScalarProperty Name="Adresa" ColumnName="Adresa" />
+                <ScalarProperty Name="Posta" ColumnName="Posta" />
+                <ScalarProperty Name="Mjesto" ColumnName="Mjesto" />
+                <ScalarProperty Name="ParentID" ColumnName="ParentID" />
+                <ScalarProperty Name="SettingsFileName" ColumnName="SettingsFileName" />
+                <ScalarProperty Name="SifraLokacije" ColumnName="SifraLokacije" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Users">
+            <EntityTypeMapping TypeName="MedisysModel.Users">
+              <MappingFragment StoreEntitySet="Users">
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+                <ScalarProperty Name="GroupID" ColumnName="GroupID" />
+                <ScalarProperty Name="SifraKorisnika" ColumnName="SifraKorisnika" />
+                <ScalarProperty Name="Titula" ColumnName="Titula" />
+                <ScalarProperty Name="Ime" ColumnName="Ime" />
+                <ScalarProperty Name="Prezime" ColumnName="Prezime" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="UserPass" ColumnName="UserPass" />
+                <ScalarProperty Name="Tel_1" ColumnName="Tel_1" />
+                <ScalarProperty Name="Tel_2" ColumnName="Tel_2" />
+                <ScalarProperty Name="Adresa" ColumnName="Adresa" />
+                <ScalarProperty Name="MjestoID" ColumnName="MjestoID" />
+                <ScalarProperty Name="Gsm" ColumnName="Gsm" />
+                <ScalarProperty Name="Napomena" ColumnName="Napomena" />
+                <ScalarProperty Name="C_DateCreated" ColumnName="_DateCreated" />
+                <ScalarProperty Name="C_DateUpdated" ColumnName="_DateUpdated" />
+                <ScalarProperty Name="C_KorisnikID" ColumnName="_KorisnikID" />
+                <ScalarProperty Name="Neaktivan" ColumnName="Neaktivan" />
+                <ScalarProperty Name="Ispis" ColumnName="Ispis" />
+                <ScalarProperty Name="Daktilograf" ColumnName="Daktilograf" />
+                <ScalarProperty Name="Opticar" ColumnName="Opticar" />
+                <ScalarProperty Name="OpciKorisnik" ColumnName="OpciKorisnik" />
+                <ScalarProperty Name="SobaNalazID" ColumnName="SobaNalazID" />
+                <ScalarProperty Name="Oib" ColumnName="Oib" />
+                <ScalarProperty Name="NalaziFilter" ColumnName="NalaziFilter" />
+                <ScalarProperty Name="ENarUserName" ColumnName="ENarUserName" />
+                <ScalarProperty Name="ENarUserPass" ColumnName="ENarUserPass" />
+                <ScalarProperty Name="MBOUser" ColumnName="MBOUser" />
+                <ScalarProperty Name="ENarOpen" ColumnName="ENarOpen" />
+                <ScalarProperty Name="ENarPreuzimanje" ColumnName="ENarPreuzimanje" />
+                <ScalarProperty Name="ENarRezervacija" ColumnName="ENarRezervacija" />
+                <ScalarProperty Name="Lijecnik" ColumnName="Lijecnik" />
+                <ScalarProperty Name="ENarCreateOperater" ColumnName="ENarCreateOperater" />
+                <ScalarProperty Name="ENarCreateRadiliste" ColumnName="ENarCreateRadiliste" />
+                <ScalarProperty Name="ENarRadilistaZahvati" ColumnName="ENarRadilistaZahvati" />
+                <ScalarProperty Name="ENarRadilistaOsobe" ColumnName="ENarRadilistaOsobe" />
+                <ScalarProperty Name="ENarSifraHzjz" ColumnName="ENarSifraHzjz" />
+                <ScalarProperty Name="ENarEvidencijaDolaska" ColumnName="ENarEvidencijaDolaska" />
+                <ScalarProperty Name="AccountLastID" ColumnName="AccountLastID" />
+                <ScalarProperty Name="AccountAutoLogin" ColumnName="AccountAutoLogin" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UsersCurrent">
+            <EntityTypeMapping TypeName="MedisysModel.UsersCurrent">
+              <MappingFragment StoreEntitySet="UsersCurrent">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UsersLog">
+            <EntityTypeMapping TypeName="MedisysModel.UsersLog">
+              <MappingFragment StoreEntitySet="UsersLog">
+                <ScalarProperty Name="LogID" ColumnName="LogID" />
+                <ScalarProperty Name="Vrijeme" ColumnName="Vrijeme" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UsersPermissions">
+            <EntityTypeMapping TypeName="MedisysModel.UsersPermissions">
+              <MappingFragment StoreEntitySet="UsersPermissions">
+                <ScalarProperty Name="Broj" ColumnName="Broj" />
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+                <ScalarProperty Name="ModuleID" ColumnName="ModuleID" />
+                <ScalarProperty Name="AccountID" ColumnName="AccountID" />
+                <ScalarProperty Name="Pokreni" ColumnName="Pokreni" />
+                <ScalarProperty Name="CanShow" ColumnName="CanShow" />
+                <ScalarProperty Name="CanAdd" ColumnName="CanAdd" />
+                <ScalarProperty Name="CanEdit" ColumnName="CanEdit" />
+                <ScalarProperty Name="CanSave" ColumnName="CanSave" />
+                <ScalarProperty Name="CanDelete" ColumnName="CanDelete" />
+                <ScalarProperty Name="CanPrint" ColumnName="CanPrint" />
+                <ScalarProperty Name="CanPreview" ColumnName="CanPreview" />
+                <ScalarProperty Name="CanRun" ColumnName="CanRun" />
+                <ScalarProperty Name="CanFinalize" ColumnName="CanFinalize" />
+                <ScalarProperty Name="CanStorno" ColumnName="CanStorno" />
+                <ScalarProperty Name="CanSeeOthers" ColumnName="CanSeeOthers" />
+                <ScalarProperty Name="CanChangeOthers" ColumnName="CanChangeOthers" />
+                <ScalarProperty Name="CanSaveOthers" ColumnName="CanSaveOthers" />
+                <ScalarProperty Name="CanPrintOthers" ColumnName="CanPrintOthers" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
