@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="MedisysModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="MedisysModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <!--Errors Found During Generation:
 warning 6002: The table/view 'Medisys.dbo.Accounts' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="Accounts">
@@ -21,7 +21,418 @@ warning 6002: The table/view 'Medisys.dbo.Accounts' does not have a primary key 
           <Property Name="SifraLokacije" Type="nvarchar" MaxLength="50" />
         </EntityType>
         <!--Errors Found During Generation:
-warning 6002: The table/view 'Medisys.dbo.Users' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+warning 6002: The table/view 'Medisys.dbo.DaniTerapija' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="DaniTerapija">
+          <Key>
+            <PropertyRef Name="DanID" />
+          </Key>
+          <Property Name="DanID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PretragaID" Type="int" />
+          <Property Name="Datum" Type="int" />
+          <Property Name="Dan" Type="nvarchar" MaxLength="50" />
+          <Property Name="Terapija" Type="bit" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'Medisys.dbo.DjelatnostiZZ' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="DjelatnostiZZ">
+          <Key>
+            <PropertyRef Name="DjelatnostID" />
+          </Key>
+          <Property Name="DjelatnostID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Sifra" Type="nvarchar" MaxLength="20" />
+          <Property Name="NazivDjelatnosti" Type="nvarchar" MaxLength="150" />
+          <Property Name="DatumPocetka" Type="datetime" />
+          <Property Name="DatumZavrsetka" Type="datetime" />
+          <Property Name="Napomena" Type="nvarchar" MaxLength="255" />
+          <Property Name="PodkategorijaID" Type="int" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'Medisys.dbo.Drzave' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="Drzave">
+          <Key>
+            <PropertyRef Name="DrzavaID" />
+          </Key>
+          <Property Name="DrzavaID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Oznaka" Type="nvarchar" MaxLength="20" />
+          <Property Name="Drzava" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'Medisys.dbo.DtpNovi' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="DtpNovi">
+          <Key>
+            <PropertyRef Name="Aktivno" />
+          </Key>
+          <Property Name="Sifra" Type="nvarchar" MaxLength="255" />
+          <Property Name="Naziv" Type="nvarchar" MaxLength="2000" />
+          <Property Name="Opis" Type="ntext" />
+          <Property Name="Koeficijent" Type="float" />
+          <Property Name="CijenaFull" Type="float" />
+          <Property Name="Cijena" Type="float" />
+          <Property Name="Aktivno" Type="bit" Nullable="false" />
+          <Property Name="DodatniObracun" Type="nvarchar" MaxLength="255" />
+          <Property Name="SljedeciPopust" Type="nvarchar" MaxLength="255" />
+          <Property Name="SljedeciPopustPosto" Type="nvarchar" MaxLength="255" />
+          <Property Name="SljedeciPopustOd" Type="nvarchar" MaxLength="255" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'Medisys.dbo.EMailAdrese' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="EMailAdrese">
+          <Key>
+            <PropertyRef Name="EMailID" />
+          </Key>
+          <Property Name="EMailID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Naziv" Type="nvarchar" MaxLength="50" />
+          <Property Name="EMail" Type="nvarchar" MaxLength="50" />
+          <Property Name="Napomena" Type="nvarchar" MaxLength="500" />
+          <Property Name="UserName" Type="nvarchar" MaxLength="50" />
+          <Property Name="Password" Type="nvarchar" MaxLength="50" />
+          <Property Name="SmtpServer" Type="nvarchar" MaxLength="50" />
+          <Property Name="SmtpServerPort" Type="nvarchar" MaxLength="50" />
+          <Property Name="AccountID" Type="int" />
+          <Property Name="OldID" Type="int" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'Medisys.dbo.Funkcije' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="Funkcije">
+          <Key>
+            <PropertyRef Name="FunkcijaID" />
+            <PropertyRef Name="Aktivna" />
+          </Key>
+          <Property Name="FunkcijaID" Type="int" Nullable="false" />
+          <Property Name="Naziv" Type="nvarchar" MaxLength="50" />
+          <Property Name="Aktivna" Type="bit" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'Medisys.dbo.Iskaznice' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="Iskaznice">
+          <Key>
+            <PropertyRef Name="IskaznicaID" />
+            <PropertyRef Name="PacijentID" />
+          </Key>
+          <Property Name="IskaznicaID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PacijentID" Type="int" Nullable="false" />
+          <Property Name="VrijediOd" Type="int" />
+          <Property Name="VrijediDo" Type="int" />
+          <Property Name="PodrucniUred" Type="int" />
+          <Property Name="BrojOsiguraneOsobe" Type="nvarchar" MaxLength="50" />
+          <Property Name="OsnovaOsiguranja" Type="int" />
+          <Property Name="BrojObveze" Type="nvarchar" MaxLength="50" />
+          <Property Name="Drzava" Type="nvarchar" MaxLength="5" />
+          <Property Name="UserID" Type="int" />
+          <Property Name="_DateCreated" Type="smalldatetime" />
+          <Property Name="_DateModified" Type="smalldatetime" />
+          <Property Name="MbSmart" Type="nvarchar" MaxLength="50" />
+          <Property Name="Smart" Type="bit" />
+          <Property Name="OldID" Type="int" />
+          <Property Name="AccountID" Type="int" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'Medisys.dbo.IskazniceDopunsko' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="IskazniceDopunsko">
+          <Key>
+            <PropertyRef Name="DopunskoID" />
+          </Key>
+          <Property Name="DopunskoID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Broj" Type="nvarchar" MaxLength="50" />
+          <Property Name="NeVrijediOd" Type="int" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'Medisys.dbo.KategorijeOsiguranja' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="KategorijeOsiguranja">
+          <Key>
+            <PropertyRef Name="KategorijeID" />
+          </Key>
+          <Property Name="KategorijeID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Sifra" Type="nvarchar" MaxLength="20" />
+          <Property Name="Naziv" Type="nvarchar" MaxLength="150" />
+          <Property Name="Napomena" Type="nvarchar" MaxLength="255" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'Medisys.dbo.Lijecnici' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="Lijecnici">
+          <Key>
+            <PropertyRef Name="LijecnikID" />
+          </Key>
+          <Property Name="LijecnikID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Sifra" Type="nvarchar" MaxLength="50" />
+          <Property Name="Ime" Type="nvarchar" MaxLength="50" />
+          <Property Name="Prezime" Type="nvarchar" MaxLength="70" />
+          <Property Name="Titula" Type="nvarchar" MaxLength="50" />
+          <Property Name="Adresa" Type="nvarchar" MaxLength="70" />
+          <Property Name="MjestoID" Type="int" />
+          <Property Name="Telefon" Type="nvarchar" MaxLength="50" />
+          <Property Name="Gsm" Type="nvarchar" MaxLength="50" />
+          <Property Name="EMail" Type="nvarchar" MaxLength="70" />
+          <Property Name="SpolID" Type="int" />
+          <Property Name="Jmbg" Type="nvarchar" MaxLength="13" />
+          <Property Name="MaticniBroj" Type="nvarchar" MaxLength="50" />
+          <Property Name="Funkcija" Type="nvarchar" MaxLength="50" />
+          <Property Name="Neaktivan" Type="bit" />
+          <Property Name="NijeLijecnik" Type="bit" />
+          <Property Name="CezihKartica" Type="nvarchar" MaxLength="50" />
+          <Property Name="CezihLicenca" Type="image" />
+          <Property Name="HCProviderUniqueIdentifier" Type="nvarchar" MaxLength="50" />
+          <Property Name="InstanceIdentifier" Type="nvarchar" MaxLength="50" />
+          <Property Name="HCOrganizationInstanceIdentifier" Type="nvarchar" MaxLength="50" />
+          <Property Name="SobaID" Type="int" />
+          <Property Name="HrDijagnoze" Type="bit" />
+          <Property Name="TitulaPrefiks" Type="nvarchar" MaxLength="50" />
+          <Property Name="LijecnikPrikaz" Type="nvarchar" MaxLength="50" />
+          <Property Name="Ispis" Type="bit" />
+          <Property Name="Specijalnost" Type="nvarchar" MaxLength="200" />
+          <Property Name="ProfitniCentarID" Type="int" />
+          <Property Name="KorisnikID" Type="int" />
+          <Property Name="OdabirRacuni" Type="bit" />
+          <Property Name="SobaPoDanu" Type="bit" />
+          <Property Name="AccountID" Type="int" />
+          <Property Name="OldID" Type="int" />
+          <Property Name="TipHzzoID" Type="int" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'Medisys.dbo.Mjesta' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="Mjesta">
+          <Key>
+            <PropertyRef Name="MjestoID" />
+          </Key>
+          <Property Name="MjestoID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Posta" Type="nvarchar" MaxLength="10" />
+          <Property Name="Mjesto" Type="nvarchar" MaxLength="50" />
+          <Property Name="ZupanijaID" Type="int" />
+          <Property Name="DrzavaID" Type="int" />
+          <Property Name="GradPostupakNeDodatno" Type="bit" />
+          <Property Name="GradPostupakNeDodatnoOd" Type="int" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'Medisys.dbo.OpravdanostiPrijema' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="OpravdanostiPrijema">
+          <Key>
+            <PropertyRef Name="OpravdanostPrijemaID" />
+          </Key>
+          <Property Name="OpravdanostPrijemaID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Sifra" Type="nvarchar" MaxLength="50" />
+          <Property Name="Razlog" Type="nvarchar" MaxLength="500" />
+          <Property Name="Opis" Type="nvarchar" MaxLength="1000" />
+          <Property Name="Napomena" Type="nvarchar" MaxLength="500" />
+        </EntityType>
+        <EntityType Name="Pacijenti">
+          <Key>
+            <PropertyRef Name="PacijentID" />
+          </Key>
+          <Property Name="PacijentID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Ime" Type="nvarchar" MaxLength="50" />
+          <Property Name="Prezime" Type="nvarchar" MaxLength="80" />
+          <Property Name="MaticniBroj" Type="int" />
+          <Property Name="SpolID" Type="int" />
+          <Property Name="DatumRodjenja" Type="int" />
+          <Property Name="Tezina" Type="nvarchar" MaxLength="20" />
+          <Property Name="Jmbg" Type="nvarchar" MaxLength="13" />
+          <Property Name="Adresa" Type="nvarchar" MaxLength="70" />
+          <Property Name="Telefon" Type="nvarchar" MaxLength="50" />
+          <Property Name="Gsm" Type="nvarchar" MaxLength="50" />
+          <Property Name="EMail" Type="nvarchar" MaxLength="50" />
+          <Property Name="MjestoID" Type="int" />
+          <Property Name="Napomena" Type="nvarchar" MaxLength="255" />
+          <Property Name="Aktivni" Type="bit" Nullable="false" />
+          <Property Name="UObradi" Type="bit" Nullable="false" />
+          <Property Name="HzzoID" Type="int" />
+          <Property Name="KategorijaOsiguranjaID" Type="int" />
+          <Property Name="ZdrastvenaIskaznica" Type="nvarchar" MaxLength="50" />
+          <Property Name="DopunskoOsiguranje" Type="nvarchar" MaxLength="50" />
+          <Property Name="StomatoloskoPomagalo" Type="nvarchar" MaxLength="50" />
+          <Property Name="Karton" Type="nvarchar" MaxLength="50" />
+          <Property Name="BolesnickiList" Type="nvarchar" MaxLength="50" />
+          <Property Name="BrojPutovnice" Type="nvarchar" MaxLength="50" />
+          <Property Name="BrojOsiguranjaIno" Type="nvarchar" MaxLength="50" />
+          <Property Name="Sudjelovanje" Type="bit" Nullable="false" />
+          <Property Name="SudjelovanjeID" Type="int" />
+          <Property Name="OslobadanjeID" Type="int" />
+          <Property Name="IskaznicaID" Type="int" />
+          <Property Name="UputniLijecnik" Type="nvarchar" MaxLength="50" />
+          <Property Name="SerijskiBrojUputnice" Type="nvarchar" MaxLength="50" />
+          <Property Name="BracnoStanje" Type="nvarchar" MaxLength="50" />
+          <Property Name="Obitelj" Type="nvarchar" MaxLength="500" />
+          <Property Name="Zaposlenje" Type="nvarchar" MaxLength="50" />
+          <Property Name="Poslodavac" Type="nvarchar" MaxLength="100" />
+          <Property Name="Zvanje" Type="nvarchar" MaxLength="50" />
+          <Property Name="OsobniLijecnik" Type="nvarchar" MaxLength="70" />
+          <Property Name="KrvnaGrupa" Type="nvarchar" MaxLength="50" />
+          <Property Name="RhFaktor" Type="nvarchar" MaxLength="50" />
+          <Property Name="GodinaRodjenja" Type="int" />
+          <Property Name="UserID" Type="int" />
+          <Property Name="_DateCreated" Type="smalldatetime" />
+          <Property Name="_DateModified" Type="smalldatetime" />
+          <Property Name="Visina" Type="nvarchar" MaxLength="20" />
+          <Property Name="Alergija" Type="nvarchar" MaxLength="200" />
+          <Property Name="Dijagnoza" Type="nvarchar" MaxLength="1000" />
+          <Property Name="PrvaHD" Type="int" />
+          <Property Name="PrvaHDNapomena" Type="nvarchar" MaxLength="100" />
+          <Property Name="MarkeriBHep" Type="nvarchar" MaxLength="50" />
+          <Property Name="MarkeriCHep" Type="nvarchar" MaxLength="50" />
+          <Property Name="MjestpPHDID" Type="int" />
+          <Property Name="MjestoTipID" Type="int" />
+          <Property Name="DopOsigVrijediDo" Type="int" />
+          <Property Name="DodatnoDopOsig" Type="bit" />
+          <Property Name="Oib" Type="nvarchar" MaxLength="50" />
+          <Property Name="PartnerID" Type="int" />
+          <Property Name="UserModID" Type="int" />
+          <Property Name="HL7ID" Type="int" />
+          <Property Name="TipID" Type="int" />
+          <Property Name="PreporukaPostojeceg" Type="bit" />
+          <Property Name="NacinDolaskaID" Type="int" />
+          <Property Name="PacijentPreporukaID" Type="int" />
+          <Property Name="PreostaloTerapija" Type="int" />
+          <Property Name="DopunskoID" Type="int" />
+          <Property Name="InozemniBroj" Type="nvarchar" MaxLength="50" />
+          <Property Name="InozemniBrojOznaka" Type="nvarchar" MaxLength="50" />
+          <Property Name="Preuzmi" Type="bit" />
+          <Property Name="UputnaUstanova" Type="nvarchar" MaxLength="50" />
+          <Property Name="StudijaOfta" Type="bit" />
+          <Property Name="OznakaUpucivanjaPacID" Type="int" />
+          <Property Name="DatumUpucivanjaPac" Type="int" />
+          <Property Name="TipNalazaID" Type="int" />
+          <Property Name="JINPac" Type="nvarchar" MaxLength="50" />
+          <Property Name="AccountID" Type="int" />
+          <Property Name="OldID" Type="int" />
+          <Property Name="ImeOcaMajke" Type="nvarchar" MaxLength="50" />
+          <Property Name="MjestoRodjenjaID" Type="int" />
+          <Property Name="NalazXml" Type="bit" />
+          <Property Name="DatotekaPreuzimanje" Type="bit" />
+          <Property Name="EMailNo" Type="bit" />
+          <Property Name="EMailDatum" Type="int" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'Medisys.dbo.Partneri' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="Partneri">
+          <Key>
+            <PropertyRef Name="PartnerID" />
+          </Key>
+          <Property Name="PartnerID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="SifraPartnera" Type="nvarchar" MaxLength="50" />
+          <Property Name="Partner" Type="nvarchar" MaxLength="255" />
+          <Property Name="Adresa" Type="nvarchar" MaxLength="255" />
+          <Property Name="MjestoID" Type="int" />
+          <Property Name="Bolnica" Type="bit" />
+          <Property Name="MaticniBroj" Type="nvarchar" MaxLength="13" />
+          <Property Name="BrojDanaOdgode" Type="int" />
+          <Property Name="UserID" Type="int" />
+          <Property Name="_DateCreated" Type="smalldatetime" />
+          <Property Name="_DateModified" Type="smalldatetime" />
+          <Property Name="Oib" Type="nvarchar" MaxLength="50" />
+          <Property Name="PozivNaBroj" Type="nvarchar" MaxLength="50" />
+          <Property Name="ZiroRacun" Type="nvarchar" MaxLength="50" />
+          <Property Name="FizickaOsoba" Type="bit" />
+          <Property Name="InozemniBroj" Type="nvarchar" MaxLength="50" />
+          <Property Name="InozemniBrojOznaka" Type="nvarchar" MaxLength="50" />
+          <Property Name="Adresa2" Type="nvarchar" MaxLength="50" />
+          <Property Name="Mjesto2ID" Type="int" />
+          <Property Name="Adresa1Ispis" Type="bit" />
+          <Property Name="Adresa2Ispis" Type="bit" />
+          <Property Name="FreeInfoRacun" Type="nvarchar" MaxLength="1000" />
+          <Property Name="FreeInfoRacunEng" Type="nvarchar" MaxLength="1000" />
+          <Property Name="TipID" Type="int" />
+          <Property Name="PopustRad" Type="real" />
+          <Property Name="PopustMaterijal" Type="real" />
+          <Property Name="PopustRadPrijevremeno" Type="real" />
+          <Property Name="PopustMaterijalPrijevremeno" Type="real" />
+          <Property Name="IspisPartnera" Type="bit" />
+          <Property Name="AccountID" Type="int" />
+          <Property Name="OldID" Type="int" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'Medisys.dbo.PodrucniUrediHZZO' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="PodrucniUrediHZZO">
+          <Key>
+            <PropertyRef Name="HzzoID" />
+          </Key>
+          <Property Name="HzzoID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Sifra" Type="nvarchar" MaxLength="20" />
+          <Property Name="Naziv" Type="nvarchar" MaxLength="50" />
+          <Property Name="Adresa" Type="nvarchar" MaxLength="100" />
+          <Property Name="MB" Type="nvarchar" MaxLength="50" />
+          <Property Name="Napomena" Type="nvarchar" MaxLength="255" />
+          <Property Name="RegionalniUred" Type="nvarchar" MaxLength="50" />
+          <Property Name="OibHZZO" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6013: The table/view 'Medisys.dbo.Pomagala' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
+        <EntityType Name="Pomagala">
+          <Property Name="Šifra pomagala" Type="nvarchar" MaxLength="255" />
+          <Property Name="Naziv pomagala" Type="nvarchar" MaxLength="255" />
+          <Property Name="Jedinična cijena pomagala" Type="float" />
+          <Property Name="Jedinica mjere" Type="nvarchar" MaxLength="255" />
+        </EntityType>-->
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'Medisys.dbo.Sobe' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="Sobe">
+          <Key>
+            <PropertyRef Name="SobaID" />
+            <PropertyRef Name="Aktivna" />
+          </Key>
+          <Property Name="SobaID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Soba" Type="nvarchar" MaxLength="50" />
+          <Property Name="Opis" Type="nvarchar" MaxLength="50" />
+          <Property Name="Aktivna" Type="bit" Nullable="false" />
+          <Property Name="ForeColor" Type="nvarchar" MaxLength="50" />
+          <Property Name="BackColor" Type="nvarchar" MaxLength="50" />
+          <Property Name="Caption" Type="nvarchar" MaxLength="50" />
+          <Property Name="Ikona" Type="nvarchar" MaxLength="50" />
+          <Property Name="BrojPretrage" Type="int" />
+          <Property Name="BrojNalaza" Type="int" />
+          <Property Name="Redoslijed" Type="int" />
+          <Property Name="BackColorActive" Type="nvarchar" MaxLength="50" />
+          <Property Name="BackColorUputnica" Type="nvarchar" MaxLength="50" />
+          <Property Name="DjelatnostID" Type="int" />
+          <Property Name="OznakaSobe" Type="nvarchar" MaxLength="50" />
+          <Property Name="MjestoIspisaSobe" Type="nvarchar" MaxLength="50" />
+          <Property Name="Hl7" Type="bit" />
+          <Property Name="HL7Aplikacija" Type="nvarchar" MaxLength="50" />
+          <Property Name="IspisSestrinskogNalaza" Type="nvarchar" MaxLength="50" />
+          <Property Name="IspisSestrinskogNalazaMemo" Type="nvarchar" MaxLength="50" />
+          <Property Name="IspisTermina" Type="bit" />
+          <Property Name="Napomena" Type="nvarchar" MaxLength="500" />
+          <Property Name="ENarNazivRadilista" Type="nvarchar" MaxLength="200" />
+          <Property Name="ENarAdresa" Type="nvarchar" MaxLength="50" />
+          <Property Name="ENarSifraHzzo" Type="nvarchar" MaxLength="50" />
+          <Property Name="ENarNemaTermina" Type="bit" />
+          <Property Name="ENarNemaTerminaID" Type="int" />
+          <Property Name="ENarNemaTerminaRazlog" Type="nvarchar" MaxLength="200" />
+          <Property Name="AccountID" Type="int" />
+          <Property Name="OldID" Type="int" />
+          <Property Name="Hl7RadilisteID" Type="int" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'Medisys.dbo.TipoviLijecnika' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="TipoviLijecnika">
+          <Key>
+            <PropertyRef Name="TipID" />
+          </Key>
+          <Property Name="TipID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Sifra" Type="nvarchar" MaxLength="50" />
+          <Property Name="Tip" Type="nvarchar" MaxLength="200" />
+          <Property Name="Napomena" Type="nvarchar" MaxLength="500" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'Medisys.dbo.TipoviPacijenata' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="TipoviPacijenata">
+          <Key>
+            <PropertyRef Name="TipID" />
+          </Key>
+          <Property Name="TipID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Tip" Type="nchar" MaxLength="10" />
+          <Property Name="Napomena" Type="nchar" MaxLength="10" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'Medisys.dbo.UserFunctions' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="UserFunctions">
+          <Key>
+            <PropertyRef Name="UserID" />
+            <PropertyRef Name="ModuleID" />
+          </Key>
+          <Property Name="ID" Type="int" />
+          <Property Name="UserID" Type="int" Nullable="false" />
+          <Property Name="ModuleID" Type="int" Nullable="false" />
+          <Property Name="CanExecute" Type="bit" />
+        </EntityType>
         <EntityType Name="Users">
           <Key>
             <PropertyRef Name="UserID" />
@@ -66,6 +477,27 @@ warning 6002: The table/view 'Medisys.dbo.Users' does not have a primary key def
           <Property Name="ENarEvidencijaDolaska" Type="bit" />
           <Property Name="AccountLastID" Type="int" />
           <Property Name="AccountAutoLogin" Type="bit" />
+          <Property Name="FunkcijaID" Type="int" />
+          <Property Name="Spol" Type="bit" />
+          <Property Name="ProfitniCentarID" Type="int" />
+          <Property Name="Aktivan" Type="bit" />
+          <Property Name="JMBG" Type="nchar" MaxLength="10" />
+          <Property Name="TipHZZOID" Type="int" />
+          <Property Name="TitulaPrefiks" Type="nvarchar" MaxLength="50" />
+          <Property Name="Specijalnost" Type="nchar" MaxLength="50" />
+          <Property Name="SobaID" Type="int" />
+          <Property Name="Sifra" Type="nvarchar" MaxLength="50" />
+          <Property Name="OldID" Type="int" />
+          <Property Name="OdabirRacuni" Type="bit" />
+          <Property Name="MaticniBroj" Type="nvarchar" MaxLength="50" />
+          <Property Name="LijecnikPrikaz" Type="nvarchar" MaxLength="50" />
+          <Property Name="InstanceIdentifier" Type="nvarchar" MaxLength="50" />
+          <Property Name="HrDijagnoze" Type="bit" />
+          <Property Name="HcProviderUniqueIdentifier" Type="nvarchar" MaxLength="50" />
+          <Property Name="HcOrganizationInstanceIdentifier" Type="nvarchar" MaxLength="50" />
+          <Property Name="EMail" Type="nvarchar" MaxLength="50" />
+          <Property Name="CezihKartica" Type="nvarchar" MaxLength="50" />
+          <Property Name="CezihLicenca" Type="image" />
         </EntityType>
         <!--Errors Found During Generation:
 warning 6002: The table/view 'Medisys.dbo.UsersCurrent' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
@@ -115,7 +547,40 @@ warning 6002: The table/view 'Medisys.dbo.UsersPermissions' does not have a prim
           <Property Name="CanSaveOthers" Type="bit" />
           <Property Name="CanPrintOthers" Type="bit" />
         </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'Medisys.dbo.Ustanove' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="Ustanove">
+          <Key>
+            <PropertyRef Name="UstanovaID" />
+          </Key>
+          <Property Name="UstanovaID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Ustanova" Type="nvarchar" MaxLength="100" />
+          <Property Name="Napomena" Type="nvarchar" MaxLength="500" />
+          <Property Name="AccountID" Type="int" />
+          <Property Name="OldID" Type="int" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'Medisys.dbo.Zupanije' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="Zupanije">
+          <Key>
+            <PropertyRef Name="ZupanijaID" />
+            <PropertyRef Name="Oznaka" />
+            <PropertyRef Name="Zupanija" />
+            <PropertyRef Name="_Deleted" />
+          </Key>
+          <Property Name="ZupanijaID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Oznaka" Type="nvarchar" MaxLength="3" Nullable="false" />
+          <Property Name="Zupanija" Type="nvarchar" MaxLength="30" Nullable="false" />
+          <Property Name="Predbroj" Type="nvarchar" MaxLength="4" />
+          <Property Name="Napomena" Type="nvarchar" MaxLength="50" />
+          <Property Name="_KorisnikID" Type="int" />
+          <Property Name="_Created" Type="datetime" />
+          <Property Name="_Modified" Type="datetime" />
+          <Property Name="_Deleted" Type="bit" Nullable="false" />
+        </EntityType>
         <EntityContainer Name="MedisysModelStoreContainer">
+          <EntitySet Name="Pacijenti" EntityType="Self.Pacijenti" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Users" EntityType="Self.Users" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Accounts" EntityType="Self.Accounts" store:Type="Tables" store:Schema="dbo">
             <DefiningQuery>SELECT 
     [Accounts].[AccountID] AS [AccountID], 
@@ -128,49 +593,266 @@ warning 6002: The table/view 'Medisys.dbo.UsersPermissions' does not have a prim
     [Accounts].[SifraLokacije] AS [SifraLokacije]
     FROM [dbo].[Accounts] AS [Accounts]</DefiningQuery>
           </EntitySet>
-          <EntitySet Name="Users" EntityType="Self.Users" store:Type="Tables" store:Schema="dbo">
+          <EntitySet Name="DaniTerapija" EntityType="Self.DaniTerapija" store:Type="Tables" store:Schema="dbo">
             <DefiningQuery>SELECT 
-    [Users].[UserID] AS [UserID], 
-    [Users].[GroupID] AS [GroupID], 
-    [Users].[SifraKorisnika] AS [SifraKorisnika], 
-    [Users].[Titula] AS [Titula], 
-    [Users].[Ime] AS [Ime], 
-    [Users].[Prezime] AS [Prezime], 
-    [Users].[UserName] AS [UserName], 
-    [Users].[UserPass] AS [UserPass], 
-    [Users].[Tel_1] AS [Tel_1], 
-    [Users].[Tel_2] AS [Tel_2], 
-    [Users].[Adresa] AS [Adresa], 
-    [Users].[MjestoID] AS [MjestoID], 
-    [Users].[Gsm] AS [Gsm], 
-    [Users].[Napomena] AS [Napomena], 
-    [Users].[_DateCreated] AS [_DateCreated], 
-    [Users].[_DateUpdated] AS [_DateUpdated], 
-    [Users].[_KorisnikID] AS [_KorisnikID], 
-    [Users].[Neaktivan] AS [Neaktivan], 
-    [Users].[Ispis] AS [Ispis], 
-    [Users].[Daktilograf] AS [Daktilograf], 
-    [Users].[Opticar] AS [Opticar], 
-    [Users].[OpciKorisnik] AS [OpciKorisnik], 
-    [Users].[SobaNalazID] AS [SobaNalazID], 
-    [Users].[Oib] AS [Oib], 
-    [Users].[NalaziFilter] AS [NalaziFilter], 
-    [Users].[ENarUserName] AS [ENarUserName], 
-    [Users].[ENarUserPass] AS [ENarUserPass], 
-    [Users].[MBOUser] AS [MBOUser], 
-    [Users].[ENarOpen] AS [ENarOpen], 
-    [Users].[ENarPreuzimanje] AS [ENarPreuzimanje], 
-    [Users].[ENarRezervacija] AS [ENarRezervacija], 
-    [Users].[Lijecnik] AS [Lijecnik], 
-    [Users].[ENarCreateOperater] AS [ENarCreateOperater], 
-    [Users].[ENarCreateRadiliste] AS [ENarCreateRadiliste], 
-    [Users].[ENarRadilistaZahvati] AS [ENarRadilistaZahvati], 
-    [Users].[ENarRadilistaOsobe] AS [ENarRadilistaOsobe], 
-    [Users].[ENarSifraHzjz] AS [ENarSifraHzjz], 
-    [Users].[ENarEvidencijaDolaska] AS [ENarEvidencijaDolaska], 
-    [Users].[AccountLastID] AS [AccountLastID], 
-    [Users].[AccountAutoLogin] AS [AccountAutoLogin]
-    FROM [dbo].[Users] AS [Users]</DefiningQuery>
+    [DaniTerapija].[DanID] AS [DanID], 
+    [DaniTerapija].[PretragaID] AS [PretragaID], 
+    [DaniTerapija].[Datum] AS [Datum], 
+    [DaniTerapija].[Dan] AS [Dan], 
+    [DaniTerapija].[Terapija] AS [Terapija]
+    FROM [dbo].[DaniTerapija] AS [DaniTerapija]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="DjelatnostiZZ" EntityType="Self.DjelatnostiZZ" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [DjelatnostiZZ].[DjelatnostID] AS [DjelatnostID], 
+    [DjelatnostiZZ].[Sifra] AS [Sifra], 
+    [DjelatnostiZZ].[NazivDjelatnosti] AS [NazivDjelatnosti], 
+    [DjelatnostiZZ].[DatumPocetka] AS [DatumPocetka], 
+    [DjelatnostiZZ].[DatumZavrsetka] AS [DatumZavrsetka], 
+    [DjelatnostiZZ].[Napomena] AS [Napomena], 
+    [DjelatnostiZZ].[PodkategorijaID] AS [PodkategorijaID]
+    FROM [dbo].[DjelatnostiZZ] AS [DjelatnostiZZ]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="Drzave" EntityType="Self.Drzave" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [Drzave].[DrzavaID] AS [DrzavaID], 
+    [Drzave].[Oznaka] AS [Oznaka], 
+    [Drzave].[Drzava] AS [Drzava]
+    FROM [dbo].[Drzave] AS [Drzave]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="DtpNovi" EntityType="Self.DtpNovi" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [DtpNovi].[Sifra] AS [Sifra], 
+    [DtpNovi].[Naziv] AS [Naziv], 
+    [DtpNovi].[Opis] AS [Opis], 
+    [DtpNovi].[Koeficijent] AS [Koeficijent], 
+    [DtpNovi].[CijenaFull] AS [CijenaFull], 
+    [DtpNovi].[Cijena] AS [Cijena], 
+    [DtpNovi].[Aktivno] AS [Aktivno], 
+    [DtpNovi].[DodatniObracun] AS [DodatniObracun], 
+    [DtpNovi].[SljedeciPopust] AS [SljedeciPopust], 
+    [DtpNovi].[SljedeciPopustPosto] AS [SljedeciPopustPosto], 
+    [DtpNovi].[SljedeciPopustOd] AS [SljedeciPopustOd]
+    FROM [dbo].[DtpNovi] AS [DtpNovi]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="EMailAdrese" EntityType="Self.EMailAdrese" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [EMailAdrese].[EMailID] AS [EMailID], 
+    [EMailAdrese].[Naziv] AS [Naziv], 
+    [EMailAdrese].[EMail] AS [EMail], 
+    [EMailAdrese].[Napomena] AS [Napomena], 
+    [EMailAdrese].[UserName] AS [UserName], 
+    [EMailAdrese].[Password] AS [Password], 
+    [EMailAdrese].[SmtpServer] AS [SmtpServer], 
+    [EMailAdrese].[SmtpServerPort] AS [SmtpServerPort], 
+    [EMailAdrese].[AccountID] AS [AccountID], 
+    [EMailAdrese].[OldID] AS [OldID]
+    FROM [dbo].[EMailAdrese] AS [EMailAdrese]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="Funkcije" EntityType="Self.Funkcije" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [Funkcije].[FunkcijaID] AS [FunkcijaID], 
+    [Funkcije].[Naziv] AS [Naziv], 
+    [Funkcije].[Aktivna] AS [Aktivna]
+    FROM [dbo].[Funkcije] AS [Funkcije]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="Iskaznice" EntityType="Self.Iskaznice" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [Iskaznice].[IskaznicaID] AS [IskaznicaID], 
+    [Iskaznice].[PacijentID] AS [PacijentID], 
+    [Iskaznice].[VrijediOd] AS [VrijediOd], 
+    [Iskaznice].[VrijediDo] AS [VrijediDo], 
+    [Iskaznice].[PodrucniUred] AS [PodrucniUred], 
+    [Iskaznice].[BrojOsiguraneOsobe] AS [BrojOsiguraneOsobe], 
+    [Iskaznice].[OsnovaOsiguranja] AS [OsnovaOsiguranja], 
+    [Iskaznice].[BrojObveze] AS [BrojObveze], 
+    [Iskaznice].[Drzava] AS [Drzava], 
+    [Iskaznice].[UserID] AS [UserID], 
+    [Iskaznice].[_DateCreated] AS [_DateCreated], 
+    [Iskaznice].[_DateModified] AS [_DateModified], 
+    [Iskaznice].[MbSmart] AS [MbSmart], 
+    [Iskaznice].[Smart] AS [Smart], 
+    [Iskaznice].[OldID] AS [OldID], 
+    [Iskaznice].[AccountID] AS [AccountID]
+    FROM [dbo].[Iskaznice] AS [Iskaznice]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="IskazniceDopunsko" EntityType="Self.IskazniceDopunsko" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [IskazniceDopunsko].[DopunskoID] AS [DopunskoID], 
+    [IskazniceDopunsko].[Broj] AS [Broj], 
+    [IskazniceDopunsko].[NeVrijediOd] AS [NeVrijediOd]
+    FROM [dbo].[IskazniceDopunsko] AS [IskazniceDopunsko]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="KategorijeOsiguranja" EntityType="Self.KategorijeOsiguranja" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [KategorijeOsiguranja].[KategorijeID] AS [KategorijeID], 
+    [KategorijeOsiguranja].[Sifra] AS [Sifra], 
+    [KategorijeOsiguranja].[Naziv] AS [Naziv], 
+    [KategorijeOsiguranja].[Napomena] AS [Napomena]
+    FROM [dbo].[KategorijeOsiguranja] AS [KategorijeOsiguranja]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="Lijecnici" EntityType="Self.Lijecnici" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [Lijecnici].[LijecnikID] AS [LijecnikID], 
+    [Lijecnici].[Sifra] AS [Sifra], 
+    [Lijecnici].[Ime] AS [Ime], 
+    [Lijecnici].[Prezime] AS [Prezime], 
+    [Lijecnici].[Titula] AS [Titula], 
+    [Lijecnici].[Adresa] AS [Adresa], 
+    [Lijecnici].[MjestoID] AS [MjestoID], 
+    [Lijecnici].[Telefon] AS [Telefon], 
+    [Lijecnici].[Gsm] AS [Gsm], 
+    [Lijecnici].[EMail] AS [EMail], 
+    [Lijecnici].[SpolID] AS [SpolID], 
+    [Lijecnici].[Jmbg] AS [Jmbg], 
+    [Lijecnici].[MaticniBroj] AS [MaticniBroj], 
+    [Lijecnici].[Funkcija] AS [Funkcija], 
+    [Lijecnici].[Neaktivan] AS [Neaktivan], 
+    [Lijecnici].[NijeLijecnik] AS [NijeLijecnik], 
+    [Lijecnici].[CezihKartica] AS [CezihKartica], 
+    [Lijecnici].[CezihLicenca] AS [CezihLicenca], 
+    [Lijecnici].[HCProviderUniqueIdentifier] AS [HCProviderUniqueIdentifier], 
+    [Lijecnici].[InstanceIdentifier] AS [InstanceIdentifier], 
+    [Lijecnici].[HCOrganizationInstanceIdentifier] AS [HCOrganizationInstanceIdentifier], 
+    [Lijecnici].[SobaID] AS [SobaID], 
+    [Lijecnici].[HrDijagnoze] AS [HrDijagnoze], 
+    [Lijecnici].[TitulaPrefiks] AS [TitulaPrefiks], 
+    [Lijecnici].[LijecnikPrikaz] AS [LijecnikPrikaz], 
+    [Lijecnici].[Ispis] AS [Ispis], 
+    [Lijecnici].[Specijalnost] AS [Specijalnost], 
+    [Lijecnici].[ProfitniCentarID] AS [ProfitniCentarID], 
+    [Lijecnici].[KorisnikID] AS [KorisnikID], 
+    [Lijecnici].[OdabirRacuni] AS [OdabirRacuni], 
+    [Lijecnici].[SobaPoDanu] AS [SobaPoDanu], 
+    [Lijecnici].[AccountID] AS [AccountID], 
+    [Lijecnici].[OldID] AS [OldID], 
+    [Lijecnici].[TipHzzoID] AS [TipHzzoID]
+    FROM [dbo].[Lijecnici] AS [Lijecnici]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="Mjesta" EntityType="Self.Mjesta" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [Mjesta].[MjestoID] AS [MjestoID], 
+    [Mjesta].[Posta] AS [Posta], 
+    [Mjesta].[Mjesto] AS [Mjesto], 
+    [Mjesta].[ZupanijaID] AS [ZupanijaID], 
+    [Mjesta].[DrzavaID] AS [DrzavaID], 
+    [Mjesta].[GradPostupakNeDodatno] AS [GradPostupakNeDodatno], 
+    [Mjesta].[GradPostupakNeDodatnoOd] AS [GradPostupakNeDodatnoOd]
+    FROM [dbo].[Mjesta] AS [Mjesta]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="OpravdanostiPrijema" EntityType="Self.OpravdanostiPrijema" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [OpravdanostiPrijema].[OpravdanostPrijemaID] AS [OpravdanostPrijemaID], 
+    [OpravdanostiPrijema].[Sifra] AS [Sifra], 
+    [OpravdanostiPrijema].[Razlog] AS [Razlog], 
+    [OpravdanostiPrijema].[Opis] AS [Opis], 
+    [OpravdanostiPrijema].[Napomena] AS [Napomena]
+    FROM [dbo].[OpravdanostiPrijema] AS [OpravdanostiPrijema]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="Partneri" EntityType="Self.Partneri" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [Partneri].[PartnerID] AS [PartnerID], 
+    [Partneri].[SifraPartnera] AS [SifraPartnera], 
+    [Partneri].[Partner] AS [Partner], 
+    [Partneri].[Adresa] AS [Adresa], 
+    [Partneri].[MjestoID] AS [MjestoID], 
+    [Partneri].[Bolnica] AS [Bolnica], 
+    [Partneri].[MaticniBroj] AS [MaticniBroj], 
+    [Partneri].[BrojDanaOdgode] AS [BrojDanaOdgode], 
+    [Partneri].[UserID] AS [UserID], 
+    [Partneri].[_DateCreated] AS [_DateCreated], 
+    [Partneri].[_DateModified] AS [_DateModified], 
+    [Partneri].[Oib] AS [Oib], 
+    [Partneri].[PozivNaBroj] AS [PozivNaBroj], 
+    [Partneri].[ZiroRacun] AS [ZiroRacun], 
+    [Partneri].[FizickaOsoba] AS [FizickaOsoba], 
+    [Partneri].[InozemniBroj] AS [InozemniBroj], 
+    [Partneri].[InozemniBrojOznaka] AS [InozemniBrojOznaka], 
+    [Partneri].[Adresa2] AS [Adresa2], 
+    [Partneri].[Mjesto2ID] AS [Mjesto2ID], 
+    [Partneri].[Adresa1Ispis] AS [Adresa1Ispis], 
+    [Partneri].[Adresa2Ispis] AS [Adresa2Ispis], 
+    [Partneri].[FreeInfoRacun] AS [FreeInfoRacun], 
+    [Partneri].[FreeInfoRacunEng] AS [FreeInfoRacunEng], 
+    [Partneri].[TipID] AS [TipID], 
+    [Partneri].[PopustRad] AS [PopustRad], 
+    [Partneri].[PopustMaterijal] AS [PopustMaterijal], 
+    [Partneri].[PopustRadPrijevremeno] AS [PopustRadPrijevremeno], 
+    [Partneri].[PopustMaterijalPrijevremeno] AS [PopustMaterijalPrijevremeno], 
+    [Partneri].[IspisPartnera] AS [IspisPartnera], 
+    [Partneri].[AccountID] AS [AccountID], 
+    [Partneri].[OldID] AS [OldID]
+    FROM [dbo].[Partneri] AS [Partneri]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="PodrucniUrediHZZO" EntityType="Self.PodrucniUrediHZZO" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [PodrucniUrediHZZO].[HzzoID] AS [HzzoID], 
+    [PodrucniUrediHZZO].[Sifra] AS [Sifra], 
+    [PodrucniUrediHZZO].[Naziv] AS [Naziv], 
+    [PodrucniUrediHZZO].[Adresa] AS [Adresa], 
+    [PodrucniUrediHZZO].[MB] AS [MB], 
+    [PodrucniUrediHZZO].[Napomena] AS [Napomena], 
+    [PodrucniUrediHZZO].[RegionalniUred] AS [RegionalniUred], 
+    [PodrucniUrediHZZO].[OibHZZO] AS [OibHZZO]
+    FROM [dbo].[PodrucniUrediHZZO] AS [PodrucniUrediHZZO]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="Sobe" EntityType="Self.Sobe" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [Sobe].[SobaID] AS [SobaID], 
+    [Sobe].[Soba] AS [Soba], 
+    [Sobe].[Opis] AS [Opis], 
+    [Sobe].[Aktivna] AS [Aktivna], 
+    [Sobe].[ForeColor] AS [ForeColor], 
+    [Sobe].[BackColor] AS [BackColor], 
+    [Sobe].[Caption] AS [Caption], 
+    [Sobe].[Ikona] AS [Ikona], 
+    [Sobe].[BrojPretrage] AS [BrojPretrage], 
+    [Sobe].[BrojNalaza] AS [BrojNalaza], 
+    [Sobe].[Redoslijed] AS [Redoslijed], 
+    [Sobe].[BackColorActive] AS [BackColorActive], 
+    [Sobe].[BackColorUputnica] AS [BackColorUputnica], 
+    [Sobe].[DjelatnostID] AS [DjelatnostID], 
+    [Sobe].[OznakaSobe] AS [OznakaSobe], 
+    [Sobe].[MjestoIspisaSobe] AS [MjestoIspisaSobe], 
+    [Sobe].[Hl7] AS [Hl7], 
+    [Sobe].[HL7Aplikacija] AS [HL7Aplikacija], 
+    [Sobe].[IspisSestrinskogNalaza] AS [IspisSestrinskogNalaza], 
+    [Sobe].[IspisSestrinskogNalazaMemo] AS [IspisSestrinskogNalazaMemo], 
+    [Sobe].[IspisTermina] AS [IspisTermina], 
+    [Sobe].[Napomena] AS [Napomena], 
+    [Sobe].[ENarNazivRadilista] AS [ENarNazivRadilista], 
+    [Sobe].[ENarAdresa] AS [ENarAdresa], 
+    [Sobe].[ENarSifraHzzo] AS [ENarSifraHzzo], 
+    [Sobe].[ENarNemaTermina] AS [ENarNemaTermina], 
+    [Sobe].[ENarNemaTerminaID] AS [ENarNemaTerminaID], 
+    [Sobe].[ENarNemaTerminaRazlog] AS [ENarNemaTerminaRazlog], 
+    [Sobe].[AccountID] AS [AccountID], 
+    [Sobe].[OldID] AS [OldID], 
+    [Sobe].[Hl7RadilisteID] AS [Hl7RadilisteID]
+    FROM [dbo].[Sobe] AS [Sobe]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="TipoviLijecnika" EntityType="Self.TipoviLijecnika" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [TipoviLijecnika].[TipID] AS [TipID], 
+    [TipoviLijecnika].[Sifra] AS [Sifra], 
+    [TipoviLijecnika].[Tip] AS [Tip], 
+    [TipoviLijecnika].[Napomena] AS [Napomena]
+    FROM [dbo].[TipoviLijecnika] AS [TipoviLijecnika]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="TipoviPacijenata" EntityType="Self.TipoviPacijenata" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [TipoviPacijenata].[TipID] AS [TipID], 
+    [TipoviPacijenata].[Tip] AS [Tip], 
+    [TipoviPacijenata].[Napomena] AS [Napomena]
+    FROM [dbo].[TipoviPacijenata] AS [TipoviPacijenata]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="UserFunctions" EntityType="Self.UserFunctions" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [UserFunctions].[ID] AS [ID], 
+    [UserFunctions].[UserID] AS [UserID], 
+    [UserFunctions].[ModuleID] AS [ModuleID], 
+    [UserFunctions].[CanExecute] AS [CanExecute]
+    FROM [dbo].[UserFunctions] AS [UserFunctions]</DefiningQuery>
           </EntitySet>
           <EntitySet Name="UsersCurrent" EntityType="Self.UsersCurrent" store:Type="Tables" store:Schema="dbo">
             <DefiningQuery>SELECT 
@@ -207,9 +889,30 @@ warning 6002: The table/view 'Medisys.dbo.UsersPermissions' does not have a prim
     [UsersPermissions].[CanPrintOthers] AS [CanPrintOthers]
     FROM [dbo].[UsersPermissions] AS [UsersPermissions]</DefiningQuery>
           </EntitySet>
+          <EntitySet Name="Ustanove" EntityType="Self.Ustanove" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [Ustanove].[UstanovaID] AS [UstanovaID], 
+    [Ustanove].[Ustanova] AS [Ustanova], 
+    [Ustanove].[Napomena] AS [Napomena], 
+    [Ustanove].[AccountID] AS [AccountID], 
+    [Ustanove].[OldID] AS [OldID]
+    FROM [dbo].[Ustanove] AS [Ustanove]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="Zupanije" EntityType="Self.Zupanije" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [Zupanije].[ZupanijaID] AS [ZupanijaID], 
+    [Zupanije].[Oznaka] AS [Oznaka], 
+    [Zupanije].[Zupanija] AS [Zupanija], 
+    [Zupanije].[Predbroj] AS [Predbroj], 
+    [Zupanije].[Napomena] AS [Napomena], 
+    [Zupanije].[_KorisnikID] AS [_KorisnikID], 
+    [Zupanije].[_Created] AS [_Created], 
+    [Zupanije].[_Modified] AS [_Modified], 
+    [Zupanije].[_Deleted] AS [_Deleted]
+    FROM [dbo].[Zupanije] AS [Zupanije]</DefiningQuery>
+          </EntitySet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="MedisysModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -270,6 +973,27 @@ warning 6002: The table/view 'Medisys.dbo.UsersPermissions' does not have a prim
           <Property Name="ENarEvidencijaDolaska" Type="Boolean" />
           <Property Name="AccountLastID" Type="Int32" />
           <Property Name="AccountAutoLogin" Type="Boolean" />
+          <Property Name="FunkcijaID" Type="Int32" />
+          <Property Name="Spol" Type="Boolean" />
+          <Property Name="ProfitniCentarID" Type="Int32" />
+          <Property Name="Aktivan" Type="Boolean" />
+          <Property Name="JMBG" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="TipHZZOID" Type="Int32" />
+          <Property Name="TitulaPrefiks" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Specijalnost" Type="String" MaxLength="50" FixedLength="true" Unicode="true" />
+          <Property Name="SobaID" Type="Int32" />
+          <Property Name="Sifra" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="OldID" Type="Int32" />
+          <Property Name="OdabirRacuni" Type="Boolean" />
+          <Property Name="MaticniBroj" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="LijecnikPrikaz" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="InstanceIdentifier" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="HrDijagnoze" Type="Boolean" />
+          <Property Name="HcProviderUniqueIdentifier" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="HcOrganizationInstanceIdentifier" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="EMail" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="CezihKartica" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="CezihLicenca" Type="Binary" MaxLength="Max" FixedLength="false" />
         </EntityType>
         <EntityType Name="UsersCurrent">
           <Key>
@@ -319,7 +1043,424 @@ warning 6002: The table/view 'Medisys.dbo.UsersPermissions' does not have a prim
           <EntitySet Name="UsersCurrent" EntityType="Self.UsersCurrent" />
           <EntitySet Name="UsersLog" EntityType="Self.UsersLog" />
           <EntitySet Name="UsersPermissions" EntityType="Self.UsersPermissions" />
+          <EntitySet Name="Pacijenti" EntityType="MedisysModel.Pacijenti" />
+          <EntitySet Name="DaniTerapija" EntityType="MedisysModel.DaniTerapija" />
+          <EntitySet Name="DjelatnostiZZ" EntityType="MedisysModel.DjelatnostiZZ" />
+          <EntitySet Name="Drzave" EntityType="MedisysModel.Drzave" />
+          <EntitySet Name="DtpNovi" EntityType="MedisysModel.DtpNovi" />
+          <EntitySet Name="EMailAdrese" EntityType="MedisysModel.EMailAdrese" />
+          <EntitySet Name="Funkcije" EntityType="MedisysModel.Funkcije" />
+          <EntitySet Name="Iskaznice" EntityType="MedisysModel.Iskaznice" />
+          <EntitySet Name="IskazniceDopunsko" EntityType="MedisysModel.IskazniceDopunsko" />
+          <EntitySet Name="KategorijeOsiguranja" EntityType="MedisysModel.KategorijeOsiguranja" />
+          <EntitySet Name="Lijecnici" EntityType="MedisysModel.Lijecnici" />
+          <EntitySet Name="Mjesta" EntityType="MedisysModel.Mjesta" />
+          <EntitySet Name="OpravdanostiPrijema" EntityType="MedisysModel.OpravdanostiPrijema" />
+          <EntitySet Name="Partneri" EntityType="MedisysModel.Partneri" />
+          <EntitySet Name="PodrucniUrediHZZO" EntityType="MedisysModel.PodrucniUrediHZZO" />
+          <EntitySet Name="Sobe" EntityType="MedisysModel.Sobe" />
+          <EntitySet Name="TipoviLijecnika" EntityType="MedisysModel.TipoviLijecnika" />
+          <EntitySet Name="TipoviPacijenata" EntityType="MedisysModel.TipoviPacijenata" />
+          <EntitySet Name="UserFunctions" EntityType="MedisysModel.UserFunctions" />
+          <EntitySet Name="Ustanove" EntityType="MedisysModel.Ustanove" />
+          <EntitySet Name="Zupanije" EntityType="MedisysModel.Zupanije" />
         </EntityContainer>
+        <EntityType Name="Pacijenti">
+          <Key>
+            <PropertyRef Name="PacijentID" />
+          </Key>
+          <Property Name="PacijentID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Ime" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Prezime" Type="String" MaxLength="80" FixedLength="false" Unicode="true" />
+          <Property Name="MaticniBroj" Type="Int32" />
+          <Property Name="SpolID" Type="Int32" />
+          <Property Name="DatumRodjenja" Type="Int32" />
+          <Property Name="Tezina" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="Jmbg" Type="String" MaxLength="13" FixedLength="false" Unicode="true" />
+          <Property Name="Adresa" Type="String" MaxLength="70" FixedLength="false" Unicode="true" />
+          <Property Name="Telefon" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Gsm" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="EMail" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="MjestoID" Type="Int32" />
+          <Property Name="Napomena" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Aktivni" Type="Boolean" Nullable="false" />
+          <Property Name="UObradi" Type="Boolean" Nullable="false" />
+          <Property Name="HzzoID" Type="Int32" />
+          <Property Name="KategorijaOsiguranjaID" Type="Int32" />
+          <Property Name="ZdrastvenaIskaznica" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="DopunskoOsiguranje" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="StomatoloskoPomagalo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Karton" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="BolesnickiList" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="BrojPutovnice" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="BrojOsiguranjaIno" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Sudjelovanje" Type="Boolean" Nullable="false" />
+          <Property Name="SudjelovanjeID" Type="Int32" />
+          <Property Name="OslobadanjeID" Type="Int32" />
+          <Property Name="IskaznicaID" Type="Int32" />
+          <Property Name="UputniLijecnik" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="SerijskiBrojUputnice" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="BracnoStanje" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Obitelj" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="Zaposlenje" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Poslodavac" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Zvanje" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="OsobniLijecnik" Type="String" MaxLength="70" FixedLength="false" Unicode="true" />
+          <Property Name="KrvnaGrupa" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="RhFaktor" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="GodinaRodjenja" Type="Int32" />
+          <Property Name="UserID" Type="Int32" />
+          <Property Name="C_DateCreated" Type="DateTime" Precision="0" />
+          <Property Name="C_DateModified" Type="DateTime" Precision="0" />
+          <Property Name="Visina" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="Alergija" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="Dijagnoza" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+          <Property Name="PrvaHD" Type="Int32" />
+          <Property Name="PrvaHDNapomena" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="MarkeriBHep" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="MarkeriCHep" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="MjestpPHDID" Type="Int32" />
+          <Property Name="MjestoTipID" Type="Int32" />
+          <Property Name="DopOsigVrijediDo" Type="Int32" />
+          <Property Name="DodatnoDopOsig" Type="Boolean" />
+          <Property Name="Oib" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="PartnerID" Type="Int32" />
+          <Property Name="UserModID" Type="Int32" />
+          <Property Name="HL7ID" Type="Int32" />
+          <Property Name="TipID" Type="Int32" />
+          <Property Name="PreporukaPostojeceg" Type="Boolean" />
+          <Property Name="NacinDolaskaID" Type="Int32" />
+          <Property Name="PacijentPreporukaID" Type="Int32" />
+          <Property Name="PreostaloTerapija" Type="Int32" />
+          <Property Name="DopunskoID" Type="Int32" />
+          <Property Name="InozemniBroj" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="InozemniBrojOznaka" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Preuzmi" Type="Boolean" />
+          <Property Name="UputnaUstanova" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="StudijaOfta" Type="Boolean" />
+          <Property Name="OznakaUpucivanjaPacID" Type="Int32" />
+          <Property Name="DatumUpucivanjaPac" Type="Int32" />
+          <Property Name="TipNalazaID" Type="Int32" />
+          <Property Name="JINPac" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="AccountID" Type="Int32" />
+          <Property Name="OldID" Type="Int32" />
+          <Property Name="ImeOcaMajke" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="MjestoRodjenjaID" Type="Int32" />
+          <Property Name="NalazXml" Type="Boolean" />
+          <Property Name="DatotekaPreuzimanje" Type="Boolean" />
+          <Property Name="EMailNo" Type="Boolean" />
+          <Property Name="EMailDatum" Type="Int32" />
+        </EntityType>
+        <EntityType Name="DaniTerapija">
+          <Key>
+            <PropertyRef Name="DanID" />
+          </Key>
+          <Property Name="DanID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PretragaID" Type="Int32" />
+          <Property Name="Datum" Type="Int32" />
+          <Property Name="Dan" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Terapija" Type="Boolean" />
+        </EntityType>
+        <EntityType Name="DjelatnostiZZ">
+          <Key>
+            <PropertyRef Name="DjelatnostID" />
+          </Key>
+          <Property Name="DjelatnostID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Sifra" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="NazivDjelatnosti" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="DatumPocetka" Type="DateTime" Precision="3" />
+          <Property Name="DatumZavrsetka" Type="DateTime" Precision="3" />
+          <Property Name="Napomena" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="PodkategorijaID" Type="Int32" />
+        </EntityType>
+        <EntityType Name="Drzave">
+          <Key>
+            <PropertyRef Name="DrzavaID" />
+          </Key>
+          <Property Name="DrzavaID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Oznaka" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="Drzava" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="DtpNovi">
+          <Key>
+            <PropertyRef Name="Aktivno" />
+          </Key>
+          <Property Name="Sifra" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Naziv" Type="String" MaxLength="2000" FixedLength="false" Unicode="true" />
+          <Property Name="Opis" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Koeficijent" Type="Double" />
+          <Property Name="CijenaFull" Type="Double" />
+          <Property Name="Cijena" Type="Double" />
+          <Property Name="Aktivno" Type="Boolean" Nullable="false" />
+          <Property Name="DodatniObracun" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="SljedeciPopust" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="SljedeciPopustPosto" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="SljedeciPopustOd" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="EMailAdrese">
+          <Key>
+            <PropertyRef Name="EMailID" />
+          </Key>
+          <Property Name="EMailID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Naziv" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="EMail" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Napomena" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="UserName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="SmtpServer" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="SmtpServerPort" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="AccountID" Type="Int32" />
+          <Property Name="OldID" Type="Int32" />
+        </EntityType>
+        <EntityType Name="Funkcije">
+          <Key>
+            <PropertyRef Name="FunkcijaID" />
+            <PropertyRef Name="Aktivna" />
+          </Key>
+          <Property Name="FunkcijaID" Type="Int32" Nullable="false" />
+          <Property Name="Naziv" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Aktivna" Type="Boolean" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Iskaznice">
+          <Key>
+            <PropertyRef Name="IskaznicaID" />
+            <PropertyRef Name="PacijentID" />
+          </Key>
+          <Property Name="IskaznicaID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PacijentID" Type="Int32" Nullable="false" />
+          <Property Name="VrijediOd" Type="Int32" />
+          <Property Name="VrijediDo" Type="Int32" />
+          <Property Name="PodrucniUred" Type="Int32" />
+          <Property Name="BrojOsiguraneOsobe" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="OsnovaOsiguranja" Type="Int32" />
+          <Property Name="BrojObveze" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Drzava" Type="String" MaxLength="5" FixedLength="false" Unicode="true" />
+          <Property Name="UserID" Type="Int32" />
+          <Property Name="C_DateCreated" Type="DateTime" Precision="0" />
+          <Property Name="C_DateModified" Type="DateTime" Precision="0" />
+          <Property Name="MbSmart" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Smart" Type="Boolean" />
+          <Property Name="OldID" Type="Int32" />
+          <Property Name="AccountID" Type="Int32" />
+        </EntityType>
+        <EntityType Name="IskazniceDopunsko">
+          <Key>
+            <PropertyRef Name="DopunskoID" />
+          </Key>
+          <Property Name="DopunskoID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Broj" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="NeVrijediOd" Type="Int32" />
+        </EntityType>
+        <EntityType Name="KategorijeOsiguranja">
+          <Key>
+            <PropertyRef Name="KategorijeID" />
+          </Key>
+          <Property Name="KategorijeID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Sifra" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="Naziv" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="Napomena" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="Lijecnici">
+          <Key>
+            <PropertyRef Name="LijecnikID" />
+          </Key>
+          <Property Name="LijecnikID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Sifra" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Ime" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Prezime" Type="String" MaxLength="70" FixedLength="false" Unicode="true" />
+          <Property Name="Titula" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Adresa" Type="String" MaxLength="70" FixedLength="false" Unicode="true" />
+          <Property Name="MjestoID" Type="Int32" />
+          <Property Name="Telefon" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Gsm" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="EMail" Type="String" MaxLength="70" FixedLength="false" Unicode="true" />
+          <Property Name="SpolID" Type="Int32" />
+          <Property Name="Jmbg" Type="String" MaxLength="13" FixedLength="false" Unicode="true" />
+          <Property Name="MaticniBroj" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Funkcija" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Neaktivan" Type="Boolean" />
+          <Property Name="NijeLijecnik" Type="Boolean" />
+          <Property Name="CezihKartica" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="CezihLicenca" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="HCProviderUniqueIdentifier" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="InstanceIdentifier" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="HCOrganizationInstanceIdentifier" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="SobaID" Type="Int32" />
+          <Property Name="HrDijagnoze" Type="Boolean" />
+          <Property Name="TitulaPrefiks" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="LijecnikPrikaz" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Ispis" Type="Boolean" />
+          <Property Name="Specijalnost" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="ProfitniCentarID" Type="Int32" />
+          <Property Name="KorisnikID" Type="Int32" />
+          <Property Name="OdabirRacuni" Type="Boolean" />
+          <Property Name="SobaPoDanu" Type="Boolean" />
+          <Property Name="AccountID" Type="Int32" />
+          <Property Name="OldID" Type="Int32" />
+          <Property Name="TipHzzoID" Type="Int32" />
+        </EntityType>
+        <EntityType Name="Mjesta">
+          <Key>
+            <PropertyRef Name="MjestoID" />
+          </Key>
+          <Property Name="MjestoID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Posta" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="Mjesto" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ZupanijaID" Type="Int32" />
+          <Property Name="DrzavaID" Type="Int32" />
+          <Property Name="GradPostupakNeDodatno" Type="Boolean" />
+          <Property Name="GradPostupakNeDodatnoOd" Type="Int32" />
+        </EntityType>
+        <EntityType Name="OpravdanostiPrijema">
+          <Key>
+            <PropertyRef Name="OpravdanostPrijemaID" />
+          </Key>
+          <Property Name="OpravdanostPrijemaID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Sifra" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Razlog" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="Opis" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+          <Property Name="Napomena" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="Partneri">
+          <Key>
+            <PropertyRef Name="PartnerID" />
+          </Key>
+          <Property Name="PartnerID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="SifraPartnera" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Partner" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Adresa" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="MjestoID" Type="Int32" />
+          <Property Name="Bolnica" Type="Boolean" />
+          <Property Name="MaticniBroj" Type="String" MaxLength="13" FixedLength="false" Unicode="true" />
+          <Property Name="BrojDanaOdgode" Type="Int32" />
+          <Property Name="UserID" Type="Int32" />
+          <Property Name="C_DateCreated" Type="DateTime" Precision="0" />
+          <Property Name="C_DateModified" Type="DateTime" Precision="0" />
+          <Property Name="Oib" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="PozivNaBroj" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ZiroRacun" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="FizickaOsoba" Type="Boolean" />
+          <Property Name="InozemniBroj" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="InozemniBrojOznaka" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Adresa2" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Mjesto2ID" Type="Int32" />
+          <Property Name="Adresa1Ispis" Type="Boolean" />
+          <Property Name="Adresa2Ispis" Type="Boolean" />
+          <Property Name="FreeInfoRacun" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+          <Property Name="FreeInfoRacunEng" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+          <Property Name="TipID" Type="Int32" />
+          <Property Name="PopustRad" Type="Single" />
+          <Property Name="PopustMaterijal" Type="Single" />
+          <Property Name="PopustRadPrijevremeno" Type="Single" />
+          <Property Name="PopustMaterijalPrijevremeno" Type="Single" />
+          <Property Name="IspisPartnera" Type="Boolean" />
+          <Property Name="AccountID" Type="Int32" />
+          <Property Name="OldID" Type="Int32" />
+        </EntityType>
+        <EntityType Name="PodrucniUrediHZZO">
+          <Key>
+            <PropertyRef Name="HzzoID" />
+          </Key>
+          <Property Name="HzzoID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Sifra" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="Naziv" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Adresa" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="MB" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Napomena" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="RegionalniUred" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="OibHZZO" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="Sobe">
+          <Key>
+            <PropertyRef Name="SobaID" />
+            <PropertyRef Name="Aktivna" />
+          </Key>
+          <Property Name="SobaID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Soba" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Opis" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Aktivna" Type="Boolean" Nullable="false" />
+          <Property Name="ForeColor" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="BackColor" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Caption" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Ikona" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="BrojPretrage" Type="Int32" />
+          <Property Name="BrojNalaza" Type="Int32" />
+          <Property Name="Redoslijed" Type="Int32" />
+          <Property Name="BackColorActive" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="BackColorUputnica" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="DjelatnostID" Type="Int32" />
+          <Property Name="OznakaSobe" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="MjestoIspisaSobe" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Hl7" Type="Boolean" />
+          <Property Name="HL7Aplikacija" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="IspisSestrinskogNalaza" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="IspisSestrinskogNalazaMemo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="IspisTermina" Type="Boolean" />
+          <Property Name="Napomena" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="ENarNazivRadilista" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="ENarAdresa" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ENarSifraHzzo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ENarNemaTermina" Type="Boolean" />
+          <Property Name="ENarNemaTerminaID" Type="Int32" />
+          <Property Name="ENarNemaTerminaRazlog" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="AccountID" Type="Int32" />
+          <Property Name="OldID" Type="Int32" />
+          <Property Name="Hl7RadilisteID" Type="Int32" />
+        </EntityType>
+        <EntityType Name="TipoviLijecnika">
+          <Key>
+            <PropertyRef Name="TipID" />
+          </Key>
+          <Property Name="TipID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Sifra" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Tip" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="Napomena" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="TipoviPacijenata">
+          <Key>
+            <PropertyRef Name="TipID" />
+          </Key>
+          <Property Name="TipID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Tip" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="Napomena" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+        </EntityType>
+        <EntityType Name="UserFunctions">
+          <Key>
+            <PropertyRef Name="UserID" />
+            <PropertyRef Name="ModuleID" />
+          </Key>
+          <Property Name="ID" Type="Int32" />
+          <Property Name="UserID" Type="Int32" Nullable="false" />
+          <Property Name="ModuleID" Type="Int32" Nullable="false" />
+          <Property Name="CanExecute" Type="Boolean" />
+        </EntityType>
+        <EntityType Name="Ustanove">
+          <Key>
+            <PropertyRef Name="UstanovaID" />
+          </Key>
+          <Property Name="UstanovaID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Ustanova" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Napomena" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="AccountID" Type="Int32" />
+          <Property Name="OldID" Type="Int32" />
+        </EntityType>
+        <EntityType Name="Zupanije">
+          <Key>
+            <PropertyRef Name="ZupanijaID" />
+            <PropertyRef Name="Oznaka" />
+            <PropertyRef Name="Zupanija" />
+            <PropertyRef Name="C_Deleted" />
+          </Key>
+          <Property Name="ZupanijaID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Oznaka" Type="String" Nullable="false" MaxLength="3" FixedLength="false" Unicode="true" />
+          <Property Name="Zupanija" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="Predbroj" Type="String" MaxLength="4" FixedLength="false" Unicode="true" />
+          <Property Name="Napomena" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="C_KorisnikID" Type="Int32" />
+          <Property Name="C_Created" Type="DateTime" Precision="3" />
+          <Property Name="C_Modified" Type="DateTime" Precision="3" />
+          <Property Name="C_Deleted" Type="Boolean" Nullable="false" />
+        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -343,6 +1484,27 @@ warning 6002: The table/view 'Medisys.dbo.UsersPermissions' does not have a prim
           <EntitySetMapping Name="Users">
             <EntityTypeMapping TypeName="MedisysModel.Users">
               <MappingFragment StoreEntitySet="Users">
+                <ScalarProperty Name="CezihLicenca" ColumnName="CezihLicenca" />
+                <ScalarProperty Name="CezihKartica" ColumnName="CezihKartica" />
+                <ScalarProperty Name="EMail" ColumnName="EMail" />
+                <ScalarProperty Name="HcOrganizationInstanceIdentifier" ColumnName="HcOrganizationInstanceIdentifier" />
+                <ScalarProperty Name="HcProviderUniqueIdentifier" ColumnName="HcProviderUniqueIdentifier" />
+                <ScalarProperty Name="HrDijagnoze" ColumnName="HrDijagnoze" />
+                <ScalarProperty Name="InstanceIdentifier" ColumnName="InstanceIdentifier" />
+                <ScalarProperty Name="LijecnikPrikaz" ColumnName="LijecnikPrikaz" />
+                <ScalarProperty Name="MaticniBroj" ColumnName="MaticniBroj" />
+                <ScalarProperty Name="OdabirRacuni" ColumnName="OdabirRacuni" />
+                <ScalarProperty Name="OldID" ColumnName="OldID" />
+                <ScalarProperty Name="Sifra" ColumnName="Sifra" />
+                <ScalarProperty Name="SobaID" ColumnName="SobaID" />
+                <ScalarProperty Name="Specijalnost" ColumnName="Specijalnost" />
+                <ScalarProperty Name="TitulaPrefiks" ColumnName="TitulaPrefiks" />
+                <ScalarProperty Name="TipHZZOID" ColumnName="TipHZZOID" />
+                <ScalarProperty Name="JMBG" ColumnName="JMBG" />
+                <ScalarProperty Name="Aktivan" ColumnName="Aktivan" />
+                <ScalarProperty Name="ProfitniCentarID" ColumnName="ProfitniCentarID" />
+                <ScalarProperty Name="Spol" ColumnName="Spol" />
+                <ScalarProperty Name="FunkcijaID" ColumnName="FunkcijaID" />
                 <ScalarProperty Name="UserID" ColumnName="UserID" />
                 <ScalarProperty Name="GroupID" ColumnName="GroupID" />
                 <ScalarProperty Name="SifraKorisnika" ColumnName="SifraKorisnika" />
@@ -424,6 +1586,416 @@ warning 6002: The table/view 'Medisys.dbo.UsersPermissions' does not have a prim
                 <ScalarProperty Name="CanChangeOthers" ColumnName="CanChangeOthers" />
                 <ScalarProperty Name="CanSaveOthers" ColumnName="CanSaveOthers" />
                 <ScalarProperty Name="CanPrintOthers" ColumnName="CanPrintOthers" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Pacijenti">
+            <EntityTypeMapping TypeName="MedisysModel.Pacijenti">
+              <MappingFragment StoreEntitySet="Pacijenti">
+                <ScalarProperty Name="EMailDatum" ColumnName="EMailDatum" />
+                <ScalarProperty Name="EMailNo" ColumnName="EMailNo" />
+                <ScalarProperty Name="DatotekaPreuzimanje" ColumnName="DatotekaPreuzimanje" />
+                <ScalarProperty Name="NalazXml" ColumnName="NalazXml" />
+                <ScalarProperty Name="MjestoRodjenjaID" ColumnName="MjestoRodjenjaID" />
+                <ScalarProperty Name="ImeOcaMajke" ColumnName="ImeOcaMajke" />
+                <ScalarProperty Name="OldID" ColumnName="OldID" />
+                <ScalarProperty Name="AccountID" ColumnName="AccountID" />
+                <ScalarProperty Name="JINPac" ColumnName="JINPac" />
+                <ScalarProperty Name="TipNalazaID" ColumnName="TipNalazaID" />
+                <ScalarProperty Name="DatumUpucivanjaPac" ColumnName="DatumUpucivanjaPac" />
+                <ScalarProperty Name="OznakaUpucivanjaPacID" ColumnName="OznakaUpucivanjaPacID" />
+                <ScalarProperty Name="StudijaOfta" ColumnName="StudijaOfta" />
+                <ScalarProperty Name="UputnaUstanova" ColumnName="UputnaUstanova" />
+                <ScalarProperty Name="Preuzmi" ColumnName="Preuzmi" />
+                <ScalarProperty Name="InozemniBrojOznaka" ColumnName="InozemniBrojOznaka" />
+                <ScalarProperty Name="InozemniBroj" ColumnName="InozemniBroj" />
+                <ScalarProperty Name="DopunskoID" ColumnName="DopunskoID" />
+                <ScalarProperty Name="PreostaloTerapija" ColumnName="PreostaloTerapija" />
+                <ScalarProperty Name="PacijentPreporukaID" ColumnName="PacijentPreporukaID" />
+                <ScalarProperty Name="NacinDolaskaID" ColumnName="NacinDolaskaID" />
+                <ScalarProperty Name="PreporukaPostojeceg" ColumnName="PreporukaPostojeceg" />
+                <ScalarProperty Name="TipID" ColumnName="TipID" />
+                <ScalarProperty Name="HL7ID" ColumnName="HL7ID" />
+                <ScalarProperty Name="UserModID" ColumnName="UserModID" />
+                <ScalarProperty Name="PartnerID" ColumnName="PartnerID" />
+                <ScalarProperty Name="Oib" ColumnName="Oib" />
+                <ScalarProperty Name="DodatnoDopOsig" ColumnName="DodatnoDopOsig" />
+                <ScalarProperty Name="DopOsigVrijediDo" ColumnName="DopOsigVrijediDo" />
+                <ScalarProperty Name="MjestoTipID" ColumnName="MjestoTipID" />
+                <ScalarProperty Name="MjestpPHDID" ColumnName="MjestpPHDID" />
+                <ScalarProperty Name="MarkeriCHep" ColumnName="MarkeriCHep" />
+                <ScalarProperty Name="MarkeriBHep" ColumnName="MarkeriBHep" />
+                <ScalarProperty Name="PrvaHDNapomena" ColumnName="PrvaHDNapomena" />
+                <ScalarProperty Name="PrvaHD" ColumnName="PrvaHD" />
+                <ScalarProperty Name="Dijagnoza" ColumnName="Dijagnoza" />
+                <ScalarProperty Name="Alergija" ColumnName="Alergija" />
+                <ScalarProperty Name="Visina" ColumnName="Visina" />
+                <ScalarProperty Name="C_DateModified" ColumnName="_DateModified" />
+                <ScalarProperty Name="C_DateCreated" ColumnName="_DateCreated" />
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+                <ScalarProperty Name="GodinaRodjenja" ColumnName="GodinaRodjenja" />
+                <ScalarProperty Name="RhFaktor" ColumnName="RhFaktor" />
+                <ScalarProperty Name="KrvnaGrupa" ColumnName="KrvnaGrupa" />
+                <ScalarProperty Name="OsobniLijecnik" ColumnName="OsobniLijecnik" />
+                <ScalarProperty Name="Zvanje" ColumnName="Zvanje" />
+                <ScalarProperty Name="Poslodavac" ColumnName="Poslodavac" />
+                <ScalarProperty Name="Zaposlenje" ColumnName="Zaposlenje" />
+                <ScalarProperty Name="Obitelj" ColumnName="Obitelj" />
+                <ScalarProperty Name="BracnoStanje" ColumnName="BracnoStanje" />
+                <ScalarProperty Name="SerijskiBrojUputnice" ColumnName="SerijskiBrojUputnice" />
+                <ScalarProperty Name="UputniLijecnik" ColumnName="UputniLijecnik" />
+                <ScalarProperty Name="IskaznicaID" ColumnName="IskaznicaID" />
+                <ScalarProperty Name="OslobadanjeID" ColumnName="OslobadanjeID" />
+                <ScalarProperty Name="SudjelovanjeID" ColumnName="SudjelovanjeID" />
+                <ScalarProperty Name="Sudjelovanje" ColumnName="Sudjelovanje" />
+                <ScalarProperty Name="BrojOsiguranjaIno" ColumnName="BrojOsiguranjaIno" />
+                <ScalarProperty Name="BrojPutovnice" ColumnName="BrojPutovnice" />
+                <ScalarProperty Name="BolesnickiList" ColumnName="BolesnickiList" />
+                <ScalarProperty Name="Karton" ColumnName="Karton" />
+                <ScalarProperty Name="StomatoloskoPomagalo" ColumnName="StomatoloskoPomagalo" />
+                <ScalarProperty Name="DopunskoOsiguranje" ColumnName="DopunskoOsiguranje" />
+                <ScalarProperty Name="ZdrastvenaIskaznica" ColumnName="ZdrastvenaIskaznica" />
+                <ScalarProperty Name="KategorijaOsiguranjaID" ColumnName="KategorijaOsiguranjaID" />
+                <ScalarProperty Name="HzzoID" ColumnName="HzzoID" />
+                <ScalarProperty Name="UObradi" ColumnName="UObradi" />
+                <ScalarProperty Name="Aktivni" ColumnName="Aktivni" />
+                <ScalarProperty Name="Napomena" ColumnName="Napomena" />
+                <ScalarProperty Name="MjestoID" ColumnName="MjestoID" />
+                <ScalarProperty Name="EMail" ColumnName="EMail" />
+                <ScalarProperty Name="Gsm" ColumnName="Gsm" />
+                <ScalarProperty Name="Telefon" ColumnName="Telefon" />
+                <ScalarProperty Name="Adresa" ColumnName="Adresa" />
+                <ScalarProperty Name="Jmbg" ColumnName="Jmbg" />
+                <ScalarProperty Name="Tezina" ColumnName="Tezina" />
+                <ScalarProperty Name="DatumRodjenja" ColumnName="DatumRodjenja" />
+                <ScalarProperty Name="SpolID" ColumnName="SpolID" />
+                <ScalarProperty Name="MaticniBroj" ColumnName="MaticniBroj" />
+                <ScalarProperty Name="Prezime" ColumnName="Prezime" />
+                <ScalarProperty Name="Ime" ColumnName="Ime" />
+                <ScalarProperty Name="PacijentID" ColumnName="PacijentID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DaniTerapija">
+            <EntityTypeMapping TypeName="MedisysModel.DaniTerapija">
+              <MappingFragment StoreEntitySet="DaniTerapija">
+                <ScalarProperty Name="Terapija" ColumnName="Terapija" />
+                <ScalarProperty Name="Dan" ColumnName="Dan" />
+                <ScalarProperty Name="Datum" ColumnName="Datum" />
+                <ScalarProperty Name="PretragaID" ColumnName="PretragaID" />
+                <ScalarProperty Name="DanID" ColumnName="DanID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DjelatnostiZZ">
+            <EntityTypeMapping TypeName="MedisysModel.DjelatnostiZZ">
+              <MappingFragment StoreEntitySet="DjelatnostiZZ">
+                <ScalarProperty Name="PodkategorijaID" ColumnName="PodkategorijaID" />
+                <ScalarProperty Name="Napomena" ColumnName="Napomena" />
+                <ScalarProperty Name="DatumZavrsetka" ColumnName="DatumZavrsetka" />
+                <ScalarProperty Name="DatumPocetka" ColumnName="DatumPocetka" />
+                <ScalarProperty Name="NazivDjelatnosti" ColumnName="NazivDjelatnosti" />
+                <ScalarProperty Name="Sifra" ColumnName="Sifra" />
+                <ScalarProperty Name="DjelatnostID" ColumnName="DjelatnostID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Drzave">
+            <EntityTypeMapping TypeName="MedisysModel.Drzave">
+              <MappingFragment StoreEntitySet="Drzave">
+                <ScalarProperty Name="Drzava" ColumnName="Drzava" />
+                <ScalarProperty Name="Oznaka" ColumnName="Oznaka" />
+                <ScalarProperty Name="DrzavaID" ColumnName="DrzavaID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DtpNovi">
+            <EntityTypeMapping TypeName="MedisysModel.DtpNovi">
+              <MappingFragment StoreEntitySet="DtpNovi">
+                <ScalarProperty Name="SljedeciPopustOd" ColumnName="SljedeciPopustOd" />
+                <ScalarProperty Name="SljedeciPopustPosto" ColumnName="SljedeciPopustPosto" />
+                <ScalarProperty Name="SljedeciPopust" ColumnName="SljedeciPopust" />
+                <ScalarProperty Name="DodatniObracun" ColumnName="DodatniObracun" />
+                <ScalarProperty Name="Aktivno" ColumnName="Aktivno" />
+                <ScalarProperty Name="Cijena" ColumnName="Cijena" />
+                <ScalarProperty Name="CijenaFull" ColumnName="CijenaFull" />
+                <ScalarProperty Name="Koeficijent" ColumnName="Koeficijent" />
+                <ScalarProperty Name="Opis" ColumnName="Opis" />
+                <ScalarProperty Name="Naziv" ColumnName="Naziv" />
+                <ScalarProperty Name="Sifra" ColumnName="Sifra" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="EMailAdrese">
+            <EntityTypeMapping TypeName="MedisysModel.EMailAdrese">
+              <MappingFragment StoreEntitySet="EMailAdrese">
+                <ScalarProperty Name="OldID" ColumnName="OldID" />
+                <ScalarProperty Name="AccountID" ColumnName="AccountID" />
+                <ScalarProperty Name="SmtpServerPort" ColumnName="SmtpServerPort" />
+                <ScalarProperty Name="SmtpServer" ColumnName="SmtpServer" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="Napomena" ColumnName="Napomena" />
+                <ScalarProperty Name="EMail" ColumnName="EMail" />
+                <ScalarProperty Name="Naziv" ColumnName="Naziv" />
+                <ScalarProperty Name="EMailID" ColumnName="EMailID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Funkcije">
+            <EntityTypeMapping TypeName="MedisysModel.Funkcije">
+              <MappingFragment StoreEntitySet="Funkcije">
+                <ScalarProperty Name="Aktivna" ColumnName="Aktivna" />
+                <ScalarProperty Name="Naziv" ColumnName="Naziv" />
+                <ScalarProperty Name="FunkcijaID" ColumnName="FunkcijaID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Iskaznice">
+            <EntityTypeMapping TypeName="MedisysModel.Iskaznice">
+              <MappingFragment StoreEntitySet="Iskaznice">
+                <ScalarProperty Name="AccountID" ColumnName="AccountID" />
+                <ScalarProperty Name="OldID" ColumnName="OldID" />
+                <ScalarProperty Name="Smart" ColumnName="Smart" />
+                <ScalarProperty Name="MbSmart" ColumnName="MbSmart" />
+                <ScalarProperty Name="C_DateModified" ColumnName="_DateModified" />
+                <ScalarProperty Name="C_DateCreated" ColumnName="_DateCreated" />
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+                <ScalarProperty Name="Drzava" ColumnName="Drzava" />
+                <ScalarProperty Name="BrojObveze" ColumnName="BrojObveze" />
+                <ScalarProperty Name="OsnovaOsiguranja" ColumnName="OsnovaOsiguranja" />
+                <ScalarProperty Name="BrojOsiguraneOsobe" ColumnName="BrojOsiguraneOsobe" />
+                <ScalarProperty Name="PodrucniUred" ColumnName="PodrucniUred" />
+                <ScalarProperty Name="VrijediDo" ColumnName="VrijediDo" />
+                <ScalarProperty Name="VrijediOd" ColumnName="VrijediOd" />
+                <ScalarProperty Name="PacijentID" ColumnName="PacijentID" />
+                <ScalarProperty Name="IskaznicaID" ColumnName="IskaznicaID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="IskazniceDopunsko">
+            <EntityTypeMapping TypeName="MedisysModel.IskazniceDopunsko">
+              <MappingFragment StoreEntitySet="IskazniceDopunsko">
+                <ScalarProperty Name="NeVrijediOd" ColumnName="NeVrijediOd" />
+                <ScalarProperty Name="Broj" ColumnName="Broj" />
+                <ScalarProperty Name="DopunskoID" ColumnName="DopunskoID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="KategorijeOsiguranja">
+            <EntityTypeMapping TypeName="MedisysModel.KategorijeOsiguranja">
+              <MappingFragment StoreEntitySet="KategorijeOsiguranja">
+                <ScalarProperty Name="Napomena" ColumnName="Napomena" />
+                <ScalarProperty Name="Naziv" ColumnName="Naziv" />
+                <ScalarProperty Name="Sifra" ColumnName="Sifra" />
+                <ScalarProperty Name="KategorijeID" ColumnName="KategorijeID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Lijecnici">
+            <EntityTypeMapping TypeName="MedisysModel.Lijecnici">
+              <MappingFragment StoreEntitySet="Lijecnici">
+                <ScalarProperty Name="TipHzzoID" ColumnName="TipHzzoID" />
+                <ScalarProperty Name="OldID" ColumnName="OldID" />
+                <ScalarProperty Name="AccountID" ColumnName="AccountID" />
+                <ScalarProperty Name="SobaPoDanu" ColumnName="SobaPoDanu" />
+                <ScalarProperty Name="OdabirRacuni" ColumnName="OdabirRacuni" />
+                <ScalarProperty Name="KorisnikID" ColumnName="KorisnikID" />
+                <ScalarProperty Name="ProfitniCentarID" ColumnName="ProfitniCentarID" />
+                <ScalarProperty Name="Specijalnost" ColumnName="Specijalnost" />
+                <ScalarProperty Name="Ispis" ColumnName="Ispis" />
+                <ScalarProperty Name="LijecnikPrikaz" ColumnName="LijecnikPrikaz" />
+                <ScalarProperty Name="TitulaPrefiks" ColumnName="TitulaPrefiks" />
+                <ScalarProperty Name="HrDijagnoze" ColumnName="HrDijagnoze" />
+                <ScalarProperty Name="SobaID" ColumnName="SobaID" />
+                <ScalarProperty Name="HCOrganizationInstanceIdentifier" ColumnName="HCOrganizationInstanceIdentifier" />
+                <ScalarProperty Name="InstanceIdentifier" ColumnName="InstanceIdentifier" />
+                <ScalarProperty Name="HCProviderUniqueIdentifier" ColumnName="HCProviderUniqueIdentifier" />
+                <ScalarProperty Name="CezihLicenca" ColumnName="CezihLicenca" />
+                <ScalarProperty Name="CezihKartica" ColumnName="CezihKartica" />
+                <ScalarProperty Name="NijeLijecnik" ColumnName="NijeLijecnik" />
+                <ScalarProperty Name="Neaktivan" ColumnName="Neaktivan" />
+                <ScalarProperty Name="Funkcija" ColumnName="Funkcija" />
+                <ScalarProperty Name="MaticniBroj" ColumnName="MaticniBroj" />
+                <ScalarProperty Name="Jmbg" ColumnName="Jmbg" />
+                <ScalarProperty Name="SpolID" ColumnName="SpolID" />
+                <ScalarProperty Name="EMail" ColumnName="EMail" />
+                <ScalarProperty Name="Gsm" ColumnName="Gsm" />
+                <ScalarProperty Name="Telefon" ColumnName="Telefon" />
+                <ScalarProperty Name="MjestoID" ColumnName="MjestoID" />
+                <ScalarProperty Name="Adresa" ColumnName="Adresa" />
+                <ScalarProperty Name="Titula" ColumnName="Titula" />
+                <ScalarProperty Name="Prezime" ColumnName="Prezime" />
+                <ScalarProperty Name="Ime" ColumnName="Ime" />
+                <ScalarProperty Name="Sifra" ColumnName="Sifra" />
+                <ScalarProperty Name="LijecnikID" ColumnName="LijecnikID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Mjesta">
+            <EntityTypeMapping TypeName="MedisysModel.Mjesta">
+              <MappingFragment StoreEntitySet="Mjesta">
+                <ScalarProperty Name="GradPostupakNeDodatnoOd" ColumnName="GradPostupakNeDodatnoOd" />
+                <ScalarProperty Name="GradPostupakNeDodatno" ColumnName="GradPostupakNeDodatno" />
+                <ScalarProperty Name="DrzavaID" ColumnName="DrzavaID" />
+                <ScalarProperty Name="ZupanijaID" ColumnName="ZupanijaID" />
+                <ScalarProperty Name="Mjesto" ColumnName="Mjesto" />
+                <ScalarProperty Name="Posta" ColumnName="Posta" />
+                <ScalarProperty Name="MjestoID" ColumnName="MjestoID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="OpravdanostiPrijema">
+            <EntityTypeMapping TypeName="MedisysModel.OpravdanostiPrijema">
+              <MappingFragment StoreEntitySet="OpravdanostiPrijema">
+                <ScalarProperty Name="Napomena" ColumnName="Napomena" />
+                <ScalarProperty Name="Opis" ColumnName="Opis" />
+                <ScalarProperty Name="Razlog" ColumnName="Razlog" />
+                <ScalarProperty Name="Sifra" ColumnName="Sifra" />
+                <ScalarProperty Name="OpravdanostPrijemaID" ColumnName="OpravdanostPrijemaID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Partneri">
+            <EntityTypeMapping TypeName="MedisysModel.Partneri">
+              <MappingFragment StoreEntitySet="Partneri">
+                <ScalarProperty Name="OldID" ColumnName="OldID" />
+                <ScalarProperty Name="AccountID" ColumnName="AccountID" />
+                <ScalarProperty Name="IspisPartnera" ColumnName="IspisPartnera" />
+                <ScalarProperty Name="PopustMaterijalPrijevremeno" ColumnName="PopustMaterijalPrijevremeno" />
+                <ScalarProperty Name="PopustRadPrijevremeno" ColumnName="PopustRadPrijevremeno" />
+                <ScalarProperty Name="PopustMaterijal" ColumnName="PopustMaterijal" />
+                <ScalarProperty Name="PopustRad" ColumnName="PopustRad" />
+                <ScalarProperty Name="TipID" ColumnName="TipID" />
+                <ScalarProperty Name="FreeInfoRacunEng" ColumnName="FreeInfoRacunEng" />
+                <ScalarProperty Name="FreeInfoRacun" ColumnName="FreeInfoRacun" />
+                <ScalarProperty Name="Adresa2Ispis" ColumnName="Adresa2Ispis" />
+                <ScalarProperty Name="Adresa1Ispis" ColumnName="Adresa1Ispis" />
+                <ScalarProperty Name="Mjesto2ID" ColumnName="Mjesto2ID" />
+                <ScalarProperty Name="Adresa2" ColumnName="Adresa2" />
+                <ScalarProperty Name="InozemniBrojOznaka" ColumnName="InozemniBrojOznaka" />
+                <ScalarProperty Name="InozemniBroj" ColumnName="InozemniBroj" />
+                <ScalarProperty Name="FizickaOsoba" ColumnName="FizickaOsoba" />
+                <ScalarProperty Name="ZiroRacun" ColumnName="ZiroRacun" />
+                <ScalarProperty Name="PozivNaBroj" ColumnName="PozivNaBroj" />
+                <ScalarProperty Name="Oib" ColumnName="Oib" />
+                <ScalarProperty Name="C_DateModified" ColumnName="_DateModified" />
+                <ScalarProperty Name="C_DateCreated" ColumnName="_DateCreated" />
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+                <ScalarProperty Name="BrojDanaOdgode" ColumnName="BrojDanaOdgode" />
+                <ScalarProperty Name="MaticniBroj" ColumnName="MaticniBroj" />
+                <ScalarProperty Name="Bolnica" ColumnName="Bolnica" />
+                <ScalarProperty Name="MjestoID" ColumnName="MjestoID" />
+                <ScalarProperty Name="Adresa" ColumnName="Adresa" />
+                <ScalarProperty Name="Partner" ColumnName="Partner" />
+                <ScalarProperty Name="SifraPartnera" ColumnName="SifraPartnera" />
+                <ScalarProperty Name="PartnerID" ColumnName="PartnerID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PodrucniUrediHZZO">
+            <EntityTypeMapping TypeName="MedisysModel.PodrucniUrediHZZO">
+              <MappingFragment StoreEntitySet="PodrucniUrediHZZO">
+                <ScalarProperty Name="OibHZZO" ColumnName="OibHZZO" />
+                <ScalarProperty Name="RegionalniUred" ColumnName="RegionalniUred" />
+                <ScalarProperty Name="Napomena" ColumnName="Napomena" />
+                <ScalarProperty Name="MB" ColumnName="MB" />
+                <ScalarProperty Name="Adresa" ColumnName="Adresa" />
+                <ScalarProperty Name="Naziv" ColumnName="Naziv" />
+                <ScalarProperty Name="Sifra" ColumnName="Sifra" />
+                <ScalarProperty Name="HzzoID" ColumnName="HzzoID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Sobe">
+            <EntityTypeMapping TypeName="MedisysModel.Sobe">
+              <MappingFragment StoreEntitySet="Sobe">
+                <ScalarProperty Name="Hl7RadilisteID" ColumnName="Hl7RadilisteID" />
+                <ScalarProperty Name="OldID" ColumnName="OldID" />
+                <ScalarProperty Name="AccountID" ColumnName="AccountID" />
+                <ScalarProperty Name="ENarNemaTerminaRazlog" ColumnName="ENarNemaTerminaRazlog" />
+                <ScalarProperty Name="ENarNemaTerminaID" ColumnName="ENarNemaTerminaID" />
+                <ScalarProperty Name="ENarNemaTermina" ColumnName="ENarNemaTermina" />
+                <ScalarProperty Name="ENarSifraHzzo" ColumnName="ENarSifraHzzo" />
+                <ScalarProperty Name="ENarAdresa" ColumnName="ENarAdresa" />
+                <ScalarProperty Name="ENarNazivRadilista" ColumnName="ENarNazivRadilista" />
+                <ScalarProperty Name="Napomena" ColumnName="Napomena" />
+                <ScalarProperty Name="IspisTermina" ColumnName="IspisTermina" />
+                <ScalarProperty Name="IspisSestrinskogNalazaMemo" ColumnName="IspisSestrinskogNalazaMemo" />
+                <ScalarProperty Name="IspisSestrinskogNalaza" ColumnName="IspisSestrinskogNalaza" />
+                <ScalarProperty Name="HL7Aplikacija" ColumnName="HL7Aplikacija" />
+                <ScalarProperty Name="Hl7" ColumnName="Hl7" />
+                <ScalarProperty Name="MjestoIspisaSobe" ColumnName="MjestoIspisaSobe" />
+                <ScalarProperty Name="OznakaSobe" ColumnName="OznakaSobe" />
+                <ScalarProperty Name="DjelatnostID" ColumnName="DjelatnostID" />
+                <ScalarProperty Name="BackColorUputnica" ColumnName="BackColorUputnica" />
+                <ScalarProperty Name="BackColorActive" ColumnName="BackColorActive" />
+                <ScalarProperty Name="Redoslijed" ColumnName="Redoslijed" />
+                <ScalarProperty Name="BrojNalaza" ColumnName="BrojNalaza" />
+                <ScalarProperty Name="BrojPretrage" ColumnName="BrojPretrage" />
+                <ScalarProperty Name="Ikona" ColumnName="Ikona" />
+                <ScalarProperty Name="Caption" ColumnName="Caption" />
+                <ScalarProperty Name="BackColor" ColumnName="BackColor" />
+                <ScalarProperty Name="ForeColor" ColumnName="ForeColor" />
+                <ScalarProperty Name="Aktivna" ColumnName="Aktivna" />
+                <ScalarProperty Name="Opis" ColumnName="Opis" />
+                <ScalarProperty Name="Soba" ColumnName="Soba" />
+                <ScalarProperty Name="SobaID" ColumnName="SobaID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TipoviLijecnika">
+            <EntityTypeMapping TypeName="MedisysModel.TipoviLijecnika">
+              <MappingFragment StoreEntitySet="TipoviLijecnika">
+                <ScalarProperty Name="Napomena" ColumnName="Napomena" />
+                <ScalarProperty Name="Tip" ColumnName="Tip" />
+                <ScalarProperty Name="Sifra" ColumnName="Sifra" />
+                <ScalarProperty Name="TipID" ColumnName="TipID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TipoviPacijenata">
+            <EntityTypeMapping TypeName="MedisysModel.TipoviPacijenata">
+              <MappingFragment StoreEntitySet="TipoviPacijenata">
+                <ScalarProperty Name="Napomena" ColumnName="Napomena" />
+                <ScalarProperty Name="Tip" ColumnName="Tip" />
+                <ScalarProperty Name="TipID" ColumnName="TipID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UserFunctions">
+            <EntityTypeMapping TypeName="MedisysModel.UserFunctions">
+              <MappingFragment StoreEntitySet="UserFunctions">
+                <ScalarProperty Name="CanExecute" ColumnName="CanExecute" />
+                <ScalarProperty Name="ModuleID" ColumnName="ModuleID" />
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Ustanove">
+            <EntityTypeMapping TypeName="MedisysModel.Ustanove">
+              <MappingFragment StoreEntitySet="Ustanove">
+                <ScalarProperty Name="OldID" ColumnName="OldID" />
+                <ScalarProperty Name="AccountID" ColumnName="AccountID" />
+                <ScalarProperty Name="Napomena" ColumnName="Napomena" />
+                <ScalarProperty Name="Ustanova" ColumnName="Ustanova" />
+                <ScalarProperty Name="UstanovaID" ColumnName="UstanovaID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Zupanije">
+            <EntityTypeMapping TypeName="MedisysModel.Zupanije">
+              <MappingFragment StoreEntitySet="Zupanije">
+                <ScalarProperty Name="C_Deleted" ColumnName="_Deleted" />
+                <ScalarProperty Name="C_Modified" ColumnName="_Modified" />
+                <ScalarProperty Name="C_Created" ColumnName="_Created" />
+                <ScalarProperty Name="C_KorisnikID" ColumnName="_KorisnikID" />
+                <ScalarProperty Name="Napomena" ColumnName="Napomena" />
+                <ScalarProperty Name="Predbroj" ColumnName="Predbroj" />
+                <ScalarProperty Name="Zupanija" ColumnName="Zupanija" />
+                <ScalarProperty Name="Oznaka" ColumnName="Oznaka" />
+                <ScalarProperty Name="ZupanijaID" ColumnName="ZupanijaID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

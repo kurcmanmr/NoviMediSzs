@@ -1,7 +1,40 @@
-﻿var UsersApp = angular.module('UsersApp', [])
+﻿var UsersApp = angular.module('UsersApp', ['ngRoute'])
 
 
 
+var configFunction = function ($routeProvider) {
+    $routeProvider
+
+    .when('/', {
+        templateUrl1: '~/Home/Index',
+        controller: 'UserController'
+    })
+
+    .when('/', {
+        templateUrl1: '~/RouteTest/One',
+        controller: 'LoginController'
+    })
+
+    .when('/', {
+        templateUrl1: '~/RouteTest/Two',
+        controller: 'LoginController'
+    })
+
+    .when('/', {
+        templateUrl1: '~/RouteTest/Three',
+        controller: 'LoginController'
+    })
+
+    //configFunction.$inject = ['$routeProvider'];
+
+
+
+}
+    UsersApp.controller('LoginController', function ($scope, $http, UsersService) {
+
+        $scope.MojaPoruka = 'Login Page'
+
+    });
 UsersApp.controller('UsersController', function ($scope, $http, UsersService) {
 
     getUsers1();
@@ -22,11 +55,7 @@ UsersApp.controller('UsersController', function ($scope, $http, UsersService) {
             console.log($scope.status);
 
         });
-
-
     }
-
-    
 
     ShowUsers = function () {
 
@@ -51,18 +80,17 @@ UsersApp.controller('UsersController', function ($scope, $http, UsersService) {
 
 });
 
+UsersApp.controller('UsersCurrentsController', function ($scope, $http, UsersCurrentsService) {
 
-UsersApp.controller('UsersLogController', function ($scope, $http, UsersLogService) {
+    getUsersCurrents1();
+    function getUsersCurrents1() {
 
-    getUsersLog1();
-    function getUsersLog1() {
-        
-        UsersLogService.getUsersLog()
+        UsersCurrentsService.getUsersCurrents()
         .success(function (data) {
-           
 
-            $scope.usersLog = data;
-            console.log($scope.usersLog);
+
+            $scope.usersCurrents = data;
+            console.log($scope.usersCurrents);
 
         })
         .error(function (error) {
@@ -76,12 +104,10 @@ UsersApp.controller('UsersLogController', function ($scope, $http, UsersLogServi
 
     }
 
-    //$scope.message = "Infrgistics";
-
-    ShowUsersLog = function () {
+    ShowUsersCurrents = function () {
 
 
-        $http.get('api/UsersLogs')
+        $http.get('api/UsersCurrents')
 
         .success(function (data1) {
 
@@ -97,23 +123,21 @@ UsersApp.controller('UsersLogController', function ($scope, $http, UsersLogServi
 
 
         });
-        
     }
 
 });
 
+UsersApp.controller('AccountsController', function ($scope, $http, AccountsService) {
 
-UsersApp.controller('UsersPermissionsController', function ($scope, $http, UsersPermissionsService) {
+    getAccounts1();
+    function getAccounts1() {
 
-    getUsersPermissions1();
-    function getUsersPermissions1() {
-
-        UsersPermissionsService.getUsersPermissions()
+        AccountsService.getAccounts()
         .success(function (data) {
 
 
-            $scope.usersPermissions = data;
-            console.log($scope.usersPermissions);
+            $scope.accounts = data;
+            console.log($scope.accounts);
 
         })
         .error(function (error) {
@@ -127,12 +151,10 @@ UsersApp.controller('UsersPermissionsController', function ($scope, $http, Users
 
     }
 
-    //$scope.message = "Infrgistics";
-
-    ShowUsersPermissions = function () {
+    ShowAccounts = function () {
 
 
-        $http.get('api/UsersPermissions')
+        $http.get('api/Accounts')
 
         .success(function (data1) {
 
@@ -149,7 +171,14 @@ UsersApp.controller('UsersPermissionsController', function ($scope, $http, Users
 
         });
 
+
+
+
+
+
     }
 
 });
+
+
 

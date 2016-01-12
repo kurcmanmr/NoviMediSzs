@@ -10,6 +10,27 @@
         <EntityTypeShape EntityType="MedisysModel.UsersCurrent" Width="1.5" PointX="4.75" PointY="0.75" IsExpanded="true" />
         <EntityTypeShape EntityType="MedisysModel.UsersLog" Width="1.5" PointX="4.75" PointY="3.75" IsExpanded="true" />
         <EntityTypeShape EntityType="MedisysModel.UsersPermissions" Width="1.5" PointX="6.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="MedisysModel.Pacijenti" Width="1.5" PointX="5.75" PointY="6.75" />
+        <EntityTypeShape EntityType="MedisysModel.DaniTerapija" Width="1.5" PointX="7.75" PointY="6.75" />
+        <EntityTypeShape EntityType="MedisysModel.DjelatnostiZZ" Width="1.5" PointX="9.75" PointY="0.75" />
+        <EntityTypeShape EntityType="MedisysModel.Drzave" Width="1.5" PointX="9.75" PointY="4.75" />
+        <EntityTypeShape EntityType="MedisysModel.DtpNovi" Width="1.5" PointX="9.75" PointY="7.75" />
+        <EntityTypeShape EntityType="MedisysModel.EMailAdrese" Width="1.5" PointX="11.75" PointY="0.75" />
+        <EntityTypeShape EntityType="MedisysModel.Funkcije" Width="1.5" PointX="11.75" PointY="4.75" />
+        <EntityTypeShape EntityType="MedisysModel.Iskaznice" Width="1.5" PointX="11.75" PointY="7.75" />
+        <EntityTypeShape EntityType="MedisysModel.IskazniceDopunsko" Width="1.5" PointX="7.75" PointY="11.75" />
+        <EntityTypeShape EntityType="MedisysModel.KategorijeOsiguranja" Width="1.5" PointX="9.75" PointY="12.75" />
+        <EntityTypeShape EntityType="MedisysModel.Lijecnici" Width="1.5" PointX="11.75" PointY="12.75" />
+        <EntityTypeShape EntityType="MedisysModel.Mjesta" Width="1.5" PointX="13.75" PointY="0.75" />
+        <EntityTypeShape EntityType="MedisysModel.OpravdanostiPrijema" Width="1.5" PointX="13.75" PointY="4.75" />
+        <EntityTypeShape EntityType="MedisysModel.Partneri" Width="1.5" PointX="13.75" PointY="7.75" />
+        <EntityTypeShape EntityType="MedisysModel.PodrucniUrediHZZO" Width="1.5" PointX="0.75" PointY="14.75" />
+        <EntityTypeShape EntityType="MedisysModel.Sobe" Width="1.5" PointX="2.75" PointY="14.75" />
+        <EntityTypeShape EntityType="MedisysModel.TipoviLijecnika" Width="1.5" PointX="15.75" PointY="0.75" />
+        <EntityTypeShape EntityType="MedisysModel.TipoviPacijenata" Width="1.5" PointX="15.75" PointY="3.75" />
+        <EntityTypeShape EntityType="MedisysModel.UserFunctions" Width="1.5" PointX="15.75" PointY="6.75" />
+        <EntityTypeShape EntityType="MedisysModel.Ustanove" Width="1.5" PointX="7.75" PointY="15.75" />
+        <EntityTypeShape EntityType="MedisysModel.Zupanije" Width="1.5" PointX="15.75" PointY="9.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

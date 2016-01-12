@@ -30,5 +30,26 @@ namespace TESTAAPI.Models
         public virtual DbSet<UsersCurrent> UsersCurrent { get; set; }
         public virtual DbSet<UsersLog> UsersLog { get; set; }
         public virtual DbSet<UsersPermissions> UsersPermissions { get; set; }
+        public virtual DbSet<Pacijenti> Pacijenti { get; set; }
+        public virtual DbSet<DaniTerapija> DaniTerapija { get; set; }
+        public virtual DbSet<DjelatnostiZZ> DjelatnostiZZ { get; set; }
+        public virtual DbSet<Drzave> Drzave { get; set; }
+        public virtual DbSet<DtpNovi> DtpNovi { get; set; }
+        public virtual DbSet<EMailAdrese> EMailAdrese { get; set; }
+        public virtual DbSet<Funkcije> Funkcije { get; set; }
+        public virtual DbSet<Iskaznice> Iskaznice { get; set; }
+        public virtual DbSet<IskazniceDopunsko> IskazniceDopunsko { get; set; }
+        public virtual DbSet<KategorijeOsiguranja> KategorijeOsiguranja { get; set; }
+        public virtual DbSet<Lijecnici> Lijecnici { get; set; }
+        public virtual DbSet<Mjesta> Mjesta { get; set; }
+        public virtual DbSet<OpravdanostiPrijema> OpravdanostiPrijema { get; set; }
+        public virtual DbSet<Partneri> Partneri { get; set; }
+        public virtual DbSet<PodrucniUrediHZZO> PodrucniUrediHZZO { get; set; }
+        public virtual DbSet<Sobe> Sobe { get; set; }
+        public virtual DbSet<TipoviLijecnika> TipoviLijecnika { get; set; }
+        public virtual DbSet<TipoviPacijenata> TipoviPacijenata { get; set; }
+        public virtual DbSet<UserFunctions> UserFunctions { get; set; }
+        public virtual DbSet<Ustanove> Ustanove { get; set; }
+        public virtual DbSet<Zupanije> Zupanije { get; set; }
     }
 }

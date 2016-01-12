@@ -16,37 +16,37 @@
 
 }]);
 
-UsersApp.factory('UsersLogService', ['$http', function ($http) {
+UsersApp.factory('UsersCurrentsService', ['$http', function ($http) {
 
 
 
-    var UsersLogService = {};
+    var UsersCurrentsService = {};
 
-    UsersLogService.getUsersLog = function () {
+    UsersCurrentsService.getUsersCurrents = function () {
 
-        return $http.get('http://localhost:5121/Api/UsersLog');
+        return $http.get('http://localhost:5121/Api/UsersCurrents');
 
     };
 
-    return UsersLogService;
+    return UsersCurrentsService;
 
 
 
 }]);
 
-UsersApp.factory('UsersPermissionsService', ['$http', function ($http) {
+UsersApp.factory('AccountsService', ['$http', function ($http) {
 
 
 
-    var UsersPermissionsService = {};
+    var AccountsService = {};
 
-    UsersPermissionsService.getUsersPermissions = function () {
+    AccountsService.getAccounts = function () {
 
-        return $http.get('http://localhost:5121/Api/UsersPermissions');
+        return $http.get('http://localhost:5121/Api/Accounts');
 
     };
 
-    return UsersPermissionsService;
+    return AccountsService;
 
 
 

@@ -2,19 +2,20 @@
 @section scripts{
 
     <script src="~/Scripts/angular.js"></script>
+    <script src="~/Scripts/angular-route.js"></script>
     <script src="~/UsersApp.js"></script>
     <script src="~/UsersService.js"></script>
-    <script src="~/Scripts/angular-route.js"></script>
+
 
 }
 
-<ul>
-    <li href="/RoutesTest/One"> Jedan   </li>
-    <li href="/RoutesTest/Two"> Dva   </li>
-    <li href="/RoutesTest/Three"> Tri   </li>
-</ul>
-
 <div ng-app="UsersApp" class="row">
+
+    <ul>
+        <li><a href="/RoutTest/One">Page One</a></li>
+        <li><a href="/RoutTest/Two">Page Two</a></li>
+        <li><a href="/RoutTest/Three">Page Three</a></li>
+    </ul>
 
     <div ng-controller="UsersController">
 
@@ -40,42 +41,53 @@
 
         </table>
 
-
     </div>
-    <div ng-controller="UsersLogController">
+
+    <div ng-controller="UsersCurrentsController">
 
 
-        <input type="text" placeholder="Search UsersLog" ng-model="nasUserLog" />
+        <input type="text" placeholder="Search UserCurrents" ng-model="nasUserCurrents" />
 
         <table class="table">
-            
-            <tr ng-repeat="us in usersLog | filter : nasUserLog">
-                <td>{{us.LogID}}</td>
-                <td>{{us.Vrijeme}}</td>
+            @*{{message}}*@
+
+            @*{{usersCurrents}}*@
+            <tr ng-repeat="usC in usersCurrents | filter : nasUserCurrents">
+
+
+                <td>{{usC.ID}}</td>
+                <td>{{usC.UserID}}</td>
+              
+
             </tr>
 
         </table>
 
-
     </div>
 
-    <div ng-controller="UsersPermissionsController">
+    <div ng-controller="AccountsController">
 
 
-        <input type="text" placeholder="Search UsersPermissions" ng-model="nasUserPermissions" />
+        <input type="text" placeholder="Search Accounts" ng-model="nasAccounts" />
 
         <table class="table">
+            @*{{message}}*@
 
-            <tr ng-repeat="us in usersPermissions | filter : nasUserPermissions">
-                <td>{{us.Broj}}</td>
-                <td>{{us.UserID}}</td>
+            @*{{accounts}}*@
+            <tr ng-repeat="ac in accounts | filter : nasAccounts">
+
+
+                <td>{{ac.AccountID}}</td>
+                <td>{{ac.Naziv}}</td>
+
+
             </tr>
 
         </table>
 
-
     </div>
+
 </div>
 
 
-
+   

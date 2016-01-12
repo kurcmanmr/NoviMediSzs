@@ -54,5 +54,26 @@ namespace TESTAAPI.Models
         public Nullable<bool> ENarEvidencijaDolaska { get; set; }
         public Nullable<int> AccountLastID { get; set; }
         public Nullable<bool> AccountAutoLogin { get; set; }
+        public Nullable<int> FunkcijaID { get; set; }
+        public Nullable<bool> Spol { get; set; }
+        public Nullable<int> ProfitniCentarID { get; set; }
+        public Nullable<bool> Aktivan { get; set; }
+        public string JMBG { get; set; }
+        public Nullable<int> TipHZZOID { get; set; }
+        public string TitulaPrefiks { get; set; }
+        public string Specijalnost { get; set; }
+        public Nullable<int> SobaID { get; set; }
+        public string Sifra { get; set; }
+        public Nullable<int> OldID { get; set; }
+        public Nullable<bool> OdabirRacuni { get; set; }
+        public string MaticniBroj { get; set; }
+        public string LijecnikPrikaz { get; set; }
+        public string InstanceIdentifier { get; set; }
+        public Nullable<bool> HrDijagnoze { get; set; }
+        public string HcProviderUniqueIdentifier { get; set; }
+        public string HcOrganizationInstanceIdentifier { get; set; }
+        public string EMail { get; set; }
+        public string CezihKartica { get; set; }
+        public byte[] CezihLicenca { get; set; }
     }
 }
